@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryan Appuhamy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #18181f;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #f0f0f5;
+    --text-muted: #6b6b80;
+    --text-secondary: #a0a0b5;
+    --accent: #6366f1;
+    --accent2: #818cf8;
+    --accent-glow: rgba(99,102,241,0.15);
+    --green: #10b981;
+    --amber: #f59e0b;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 60px;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 40px 80px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--accent2);
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(40px, 6vw, 68px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 span {
+    color: var(--accent2);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 0.5px solid var(--border-hover);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent2); color: var(--text); transform: translateY(-1px); }
+
+  /* SECTIONS */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 100px 40px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 48px;
+    line-height: 1.15;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-text {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .about-text p + p { margin-top: 16px; }
+
+  .about-text strong { color: var(--text); font-weight: 500; }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .stat-row:first-child { border-top: 0.5px solid var(--border); }
+
+  .stat-label { font-size: 13px; color: var(--text-muted); }
+  .stat-value { font-size: 13px; font-weight: 500; color: var(--text); font-family: 'Space Grotesk', sans-serif; }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .exp-item:first-child { border-top: 0.5px solid var(--border); }
+
+  .exp-date {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'Space Grotesk', sans-serif;
+    padding-top: 3px;
+  }
+
+  .exp-role {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .exp-company {
+    font-size: 13px;
+    color: var(--accent2);
+    margin-bottom: 12px;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .exp-bullets li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .project-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg3);
+    transform: translateY(-2px);
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent2);
+    background: var(--accent-glow);
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  .project-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .stack-tag {
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .project-arrow {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    color: var(--text-muted);
+    font-size: 16px;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .project-card:hover .project-arrow {
+    color: var(--accent2);
+    transform: translate(2px, -2px);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .skill-block {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .skill-block-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .skill-item {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  /* CERTS */
+  .cert-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .cert-row:first-child { border-top: 0.5px solid var(--border); }
+
+  .cert-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .cert-org { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .cert-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  .cert-badge.earned { background: rgba(16,185,129,0.1); color: var(--green); }
+  .cert-badge.progress { background: rgba(245,158,11,0.1); color: var(--amber); }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .contact-text {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--accent2); }
+
+  .contact-link-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 32px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    width: 100%;
+    height: 0.5px;
+    background: var(--border);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 700px) {
+    nav { padding: 0 20px; }
+    .hero { padding: 100px 20px 60px; }
+    section { padding: 60px 20px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Ryan Appuhamy</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Finance · Technology · Markets</div>
+  <h1>Analytical finance<br>meets <span>systematic thinking</span></h1>
+  <p class="hero-sub">Finance graduate from Università Cattolica, starting MSc in Financial Technology and Computing at USI Lugano in September 2026. I build tools at the intersection of markets and data.</p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">View projects →</a>
+    <a href="#contact" class="btn-ghost">Get in touch</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="section-title">Markets-first,<br>tech-enabled</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a finance graduate with a deep interest in <strong>financial markets, equity analysis, and systematic investing</strong>. My edge is combining rigorous financial thinking with the ability to build tools that automate and scale analytical work.</p>
+      <p>After graduating from Università Cattolica in Milan, I'm starting the <strong>MSc in Financial Technology and Computing at USI Lugano</strong> — an SFI-accredited programme covering algorithmic trading, derivatives, asset pricing and financial modelling.</p>
+      <p>I'm currently preparing for <strong>CFA Level 1</strong> and building projects that apply programming to real investment problems — from semiconductor cycle tracking to automated equity research.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-row"><span class="stat-label">Based in</span><span class="stat-value">Milan → Lugano (Sep 2026)</span></div>
+      <div class="stat-row"><span class="stat-label">Focus</span><span class="stat-value">Asset Management · Equity Research</span></div>
+      <div class="stat-row"><span class="stat-label">MSc</span><span class="stat-value">MFiT, USI Lugano (SFI)</span></div>
+      <div class="stat-row"><span class="stat-label">BSc</span><span class="stat-value">Business Admin, Unicattolica</span></div>
+      <div class="stat-row"><span class="stat-label">CFA</span><span class="stat-value">Level 1 — Nov 2026</span></div>
+      <div class="stat-row"><span class="stat-label">Languages</span><span class="stat-value">Italian · English C1</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="section-title">Where I've worked</div>
+
+  <div class="exp-item">
+    <div class="exp-date">Mar – May 2026</div>
+    <div>
+      <div class="exp-role">Finance & Banking Intern</div>
+      <div class="exp-company">Banca del Fucino S.p.A. — Milan</div>
+      <ul class="exp-bullets">
+        <li>Structured credit operations for HNWI and corporate clients: mortgage structuring, collateral analysis, real estate transactions</li>
+        <li>Bloomberg Terminal market monitoring; financial reporting and macroeconomic analysis supporting investment decisions</li>
+        <li>Factoring support: credit verification, receivables assessment, financial statement and business plan review</li>
+        <li>Fundamental analysis of equities and ETFs: earnings, margins, sector dynamics, and macroeconomic context</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <div class="section-title">What I've built</div>
+  <div class="projects-grid">
+
+    <a href="https://github.com/ryanappuhamy/Semiconductors-cycle-intelligence" target="_blank" class="project-card">
+      <span class="project-arrow">↗</span>
+      <div class="project-tag">Python · Data</div>
+      <div class="project-title">Semiconductor Cycle Intelligence</div>
+      <div class="project-desc">Composite cycle index built from equipment revenue growth, inventory ratios, and SOXX momentum. Classifies market phase and generates AI-powered sector briefs via Claude API.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">pandas</span>
+        <span class="stack-tag">yfinance</span>
+        <span class="stack-tag">Claude API</span>
+        <span class="stack-tag">matplotlib</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/ryanappuhamy/equity-research-platform-ryanappuhamy" target="_blank" class="project-card">
+      <span class="project-arrow">↗</span>
+      <div class="project-tag">Python · FastAPI</div>
+      <div class="project-title">Equity Research Platform</div>
+      <div class="project-desc">Institutional-grade research backend: SEC EDGAR insider activity, earnings transcripts, FRED macro context, portfolio risk decomposition, and AI-generated research notes.</div>
+      <div class="project-stack">
+        <span class="stack-tag">FastAPI</span>
+        <span class="stack-tag">SEC EDGAR</span>
+        <span class="stack-tag">FRED</span>
+        <span class="stack-tag">Claude API</span>
+        <span class="stack-tag">SQLite</span>
+      </div>
+    </a>
+
+    <div class="project-card" style="cursor:default">
+      <div class="project-tag">Excel · Finance</div>
+      <div class="project-title">Portfolio Tracker — Trade Republic</div>
+      <div class="project-desc">Personal investment tracker with Italian tax compliance (26% capital gains, 12.5% government bonds), monthly snapshots, cost basis tracking, and PAC simulator.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Excel</span>
+        <span class="stack-tag">Italian tax law</span>
+        <span class="stack-tag">PAC strategy</span>
+      </div>
+    </div>
+
+    <a href="thesis.pdf" target="_blank" class="project-card">
+      <span class="project-arrow">↗</span>
+      <div class="project-tag">Research · Macroeconomics</div>
+      <div class="project-title">The Macroeconomic Impact of AI: Productivity, Employment and European Perspectives</div>
+      <div class="project-desc">Bachelor's thesis analyzing the gap between AI's microeconomic gains and aggregate productivity data. Applies Acemoglu's task-based model, Brynjolfsson's Productivity J-curve, and the Draghi Report to assess Europe's structural position. Università Cattolica, 2026.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Acemoglu 2024</span>
+        <span class="stack-tag">Draghi Report</span>
+        <span class="stack-tag">TFP · J-curve</span>
+        <span class="stack-tag">EU policy</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS & CERTS -->
+<section id="skills">
+  <div class="section-label">Skills & Certifications</div>
+  <div class="section-title">Tools & credentials</div>
+
+  <div class="skills-grid" style="margin-bottom: 48px;">
+    <div class="skill-block">
+      <div class="skill-block-title">Finance</div>
+      <div class="skill-list">
+        <div class="skill-item">Financial statement analysis</div>
+        <div class="skill-item">Bloomberg Terminal</div>
+        <div class="skill-item">Equity & credit research</div>
+        <div class="skill-item">Fundamental analysis</div>
+        <div class="skill-item">Macroeconomic analysis</div>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">Coding & Data</div>
+      <div class="skill-list">
+        <div class="skill-item">Python (pandas, matplotlib)</div>
+        <div class="skill-item">FastAPI</div>
+        <div class="skill-item">Excel (advanced)</div>
+        <div class="skill-item">SQL (learning)</div>
+        <div class="skill-item">Git & GitHub</div>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-title">AI & Automation</div>
+      <div class="skill-list">
+        <div class="skill-item">Claude / Anthropic API</div>
+        <div class="skill-item">Cursor (AI coding)</div>
+        <div class="skill-item">ChatGPT</div>
+        <div class="skill-item">AI-assisted workflows</div>
+        <div class="skill-item">n8n automation</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cert-row">
+    <div><div class="cert-name">Bloomberg Market Concepts (BMC)</div><div class="cert-org">Bloomberg</div></div>
+    <span class="cert-badge earned">Earned</span>
+  </div>
+  <div class="cert-row">
+    <div><div class="cert-name">Bloomberg Finance Fundamentals (BFF)</div><div class="cert-org">Bloomberg</div></div>
+    <span class="cert-badge earned">Earned</span>
+  </div>
+  <div class="cert-row">
+    <div><div class="cert-name">Advanced Excel & Data Analysis</div><div class="cert-org">2026</div></div>
+    <span class="cert-badge earned">Earned</span>
+  </div>
+  <div class="cert-row">
+    <div><div class="cert-name">IELTS Academic 8.0 (C1)</div><div class="cert-org">2026</div></div>
+    <span class="cert-badge earned">Earned</span>
+  </div>
+  <div class="cert-row">
+    <div><div class="cert-name">CFA Level 1</div><div class="cert-org">CFA Institute — November 2026</div></div>
+    <span class="cert-badge progress">In progress</span>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <div class="section-title">Get in touch</div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-text">I'm open to conversations about asset management, equity research, family office roles, and any intersection of finance and technology. Feel free to reach out.</p>
+      <a href="mailto:inquiriesryan@gmail.com" class="btn-primary" style="display:inline-flex">inquiriesryan@gmail.com →</a>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:inquiriesryan@gmail.com" class="contact-link">
+        <div class="contact-link-icon">✉</div>
+        inquiriesryan@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/ryanappuhamy" target="_blank" class="contact-link">
+        <div class="contact-link-icon">in</div>
+        linkedin.com/in/ryanappuhamy
+      </a>
+      <a href="https://github.com/ryanappuhamy" target="_blank" class="contact-link">
+        <div class="contact-link-icon">gh</div>
+        github.com/ryanappuhamy
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-text">© 2026 Ryan Appuhamy</div>
+  <div class="footer-text">Milan · Lugano</div>
+</footer>
+
+</body>
+</html>
