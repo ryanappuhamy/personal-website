@@ -2,7 +2,7 @@
 
 Static personal site for Ryan Appuhamy — plain HTML, CSS and JS, no framework, no build step.
 
-- **Live:** https://ryanappuhamy.vercel.app (moving to ryanappuhamy.com)
+- **Live:** https://ryanappuhamy.com
 - **Pages:** `index.html` (short bio, projects, contact) and `equity-research.html` (the equity research platform project)
 - **Shared design system:** `css/site.css` and `js/site.js`, matching the platform (equity-research-frontend): colors, Geist fonts, 22px cards, pill nav with sliding indicator (bottom bar on phones), rise animations
 - **Images:** platform screenshots in `img/` as `.webp` (1440 px wide, 2x)
