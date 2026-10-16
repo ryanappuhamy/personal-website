@@ -3,9 +3,9 @@
 Static personal site for Ryan Appuhamy — plain HTML, CSS and JS, no framework, no build step.
 
 - **Live:** https://ryanappuhamy.com
-- **Pages:** `index.html` (short bio, projects, contact) and `equity-research.html` (the equity research platform project)
+- **Pages:** `index.html` (short bio, projects, contact), `equity-research.html` (equity research platform), `power-demand.html` (Swiss power demand forecasting) and `semiconductors.html` (semiconductor cycle intelligence)
 - **Shared design system:** `css/site.css` and `js/site.js`, matching the platform (equity-research-frontend): colors, Geist fonts, 22px cards, pill nav with sliding indicator (bottom bar on phones), rise animations
-- **Images:** platform screenshots in `img/` as `.webp` (1440 px wide, 2x)
+- **Images:** platform screenshots and project charts in `img/` as `.webp` (2x)
 - **Other files:** `thesis.pdf`, `favicon.svg`
 
 The CV is not published: visitors request it by email.
