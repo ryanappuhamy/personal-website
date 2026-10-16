@@ -16,228 +16,171 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/site.css">
-<script>document.documentElement.classList.add("js")</script>
 <style>
-  main { display: flex; flex-direction: column; gap: 88px; padding-bottom: 56px; }
-
-  .kick { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-bright); }
-
-  /* Hero */
-  .hero { padding-top: 56px; }
-  .hero h1 { margin-top: 14px; max-width: 15em; font-size: clamp(38px, 6.4vw, 60px); font-weight: 600; line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; }
-  .hero h1 span { color: var(--muted); }
-  .lede { margin-top: 20px; max-width: 40em; font-size: 17px; line-height: 1.6; color: var(--muted); }
-  .term { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 12.5px; color: var(--faint); }
-  .term span { opacity: 0; transform: translateY(3px); animation: tok 0.5s ease forwards; }
-  .term b { color: var(--accent-bright); font-weight: 500; }
-  .term i { font-style: normal; color: var(--up); }
-  @keyframes tok { to { opacity: 1; transform: none; } }
-  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-  .hero .frame { margin-top: 44px; }
-
-  /* Headline numbers */
-  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
-  .stat { padding: 20px; }
-  .stat__value { font-size: 34px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
-  .stat__label { margin-top: 8px; font-size: 13.5px; color: var(--muted); line-height: 1.55; }
-
-  /* Two-column text blocks */
-  .row { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
-  .row--flip { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
-  .row--flip > .txt { order: 2; }
-  h2 { margin-top: 10px; font-size: clamp(26px, 3.4vw, 34px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; }
-  .txt p { margin-top: 14px; color: var(--muted); font-size: 15.5px; }
-  .ticks { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
-  .ticks li { position: relative; padding-left: 18px; font-size: 14.5px; line-height: 1.55; }
-  .ticks li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
-  .ticks b { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--muted); }
-
-  /* Tables */
-  .pipe { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; font-family: var(--font-mono); font-size: 12.5px; }
-  .pipe li { padding: 7px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--muted); }
-  .pipe li b { color: var(--accent-bright); font-weight: 500; margin-right: 8px; }
-  .table-card { margin-top: 12px; padding: 4px 18px; overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { text-align: left; padding: 13px 12px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
-  tr:last-child td { border-bottom: 0; }
-  th { font-size: 12px; font-weight: 500; color: var(--muted); }
-  td.num, th.num { text-align: right; font-family: var(--font-mono); white-space: nowrap; }
-  tr.best td { font-weight: 600; }
-  td .muted { font-weight: 400; }
-
-  /* Built with */
-  .built { text-align: center; }
-  .built .chips { justify-content: center; margin-top: 14px; }
-  .built .chip { font-size: 12.5px; padding: 5px 14px; }
-
-  .disclaimer { font-size: 13px; color: var(--faint); max-width: 44em; }
-
-  @media (max-width: 860px) {
-    main { gap: 64px; }
-    .row, .row--flip { grid-template-columns: 1fr; gap: 24px; }
-    .row--flip > .txt { order: 0; }
-    .hero { padding-top: 32px; }
-    .stats { grid-template-columns: 1fr; }
+  html { background:#08090c; }
+  body { margin:0; background:#08090c; color:#e9ebef; -webkit-font-smoothing:antialiased; font-family:Geist,system-ui,-apple-system,'Segoe UI',sans-serif; }
+  a { color:#e9ebef; } a:hover { color:#fff; }
+  ::selection { background:#e9ebef; color:#08090c; }
+  .wrap { max-width:1200px; margin:0 auto; padding:0 clamp(20px,5vw,48px); }
+  header { position:sticky; top:0; z-index:20; background:rgba(8,9,12,0.82); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid #20242c; }
+  header .wrap { min-height:64px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0 24px; }
+  .back { font:500 15px/1 Geist,sans-serif; color:#949aa6; text-decoration:none; padding:14px 0; }
+  .back:hover { color:#e9ebef; }
+  .name { font:600 17px/1 Geist,sans-serif; letter-spacing:-0.01em; text-decoration:none; padding:12px 0; }
+  .hero { padding:clamp(56px,9vw,110px) 0 clamp(40px,6vw,72px); }
+  .eyebrow { font:600 14px/1 Geist,sans-serif; color:#8ea5ff; }
+  h1 { margin:18px 0 0; max-width:980px; font:600 clamp(38px,6vw,84px)/1.04 Geist,sans-serif; letter-spacing:-0.045em; text-wrap:balance; }
+  .lede { margin:24px 0 0; max-width:760px; font:400 clamp(17px,1.7vw,21px)/1.55 Geist,sans-serif; color:#949aa6; text-wrap:pretty; }
+  .tags { margin-top:clamp(28px,4vw,40px); display:flex; flex-wrap:wrap; gap:10px; }
+  .tag { display:inline-flex; align-items:center; padding:9px 14px; border:1px solid #20242c; border-radius:8px; background:#0f1116; font:500 14px/1 Geist,sans-serif; color:#e9ebef; }
+  .figs { margin-top:clamp(40px,6vw,64px); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid #20242c; }
+  .fig { padding:24px 24px 0 0; }
+  .fig + .fig { padding-left:24px; border-left:1px solid #20242c; }
+  .fig-v { font:600 clamp(30px,3.6vw,44px)/1 Geist,sans-serif; letter-spacing:-0.035em; }
+  .fig-l { margin-top:12px; max-width:30ch; font:400 15px/1.5 Geist,sans-serif; color:#949aa6; }
+  .pb { display:grid; grid-template-columns:minmax(240px,1fr) minmax(0,800px); justify-content:space-between; gap:clamp(20px,3vw,48px); align-items:start; padding:clamp(40px,5vw,64px) 0; border-top:1px solid #20242c; }
+  .pb-t { display:flex; flex-direction:column; gap:12px; max-width:420px; }
+  .num { font:400 13px/1 'Geist Mono',monospace; color:#949aa6; }
+  h2 { margin:0; font:600 clamp(22px,2.4vw,30px)/1.2 Geist,sans-serif; letter-spacing:-0.025em; text-wrap:balance; }
+  .pb-t p { margin:0; font:400 clamp(16px,1.5vw,18px)/1.55 Geist,sans-serif; color:#949aa6; text-wrap:pretty; }
+  .pb-t p b { color:#e9ebef; font-weight:500; }
+  .pb-r { min-width:0; }
+  .pz { all:unset; box-sizing:border-box; min-width:0; display:block; width:100%; max-width:800px; cursor:zoom-in; border:1px solid #20242c; border-radius:12px; overflow:hidden; background:#0f1116; transition:border-color 250ms, transform 400ms cubic-bezier(.22,1,.36,1); }
+  .pz img { display:block; width:100%; height:auto; }
+  .pz:hover { border-color:#3a3d44; transform:translateY(-3px); }
+  .pz:focus-visible { outline:2px solid #8ea5ff; outline-offset:3px; }
+  .tbl { border:1px solid #20242c; border-radius:12px; background:#0f1116; overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font:400 15px/1.4 Geist,sans-serif; }
+  th, td { text-align:right; padding:14px 18px; border-bottom:1px solid #20242c; white-space:nowrap; }
+  th:first-child, td:first-child { text-align:left; white-space:normal; }
+  td:not(:first-child) { font-family:'Geist Mono',monospace; font-size:14px; }
+  th { font:500 13px/1.3 Geist,sans-serif; color:#949aa6; }
+  tbody tr:last-child td { border-bottom:0; }
+  tr.best td { color:#8ea5ff; }
+  .closing { padding:clamp(72px,10vw,130px) 0; border-top:1px solid #20242c; }
+  .closing p { margin:0 0 28px; max-width:640px; font:400 15px/1.55 Geist,sans-serif; color:#949aa6; }
+  .btn { display:inline-flex; align-items:center; padding:16px 26px; border-radius:8px; background:#8ea5ff; color:#08090c; border:1px solid #8ea5ff; font:600 16px/1 Geist,sans-serif; text-decoration:none; transition:background 200ms, border-color 200ms; }
+  .btn:hover { background:#b4c3ff; border-color:#b4c3ff; color:#08090c; }
+  footer { border-top:1px solid #20242c; }
+  footer .wrap { padding-top:28px; padding-bottom:28px; font:400 14px/1.4 Geist,sans-serif; color:#949aa6; }
+  #lb { position:fixed; inset:0; z-index:50; background:rgba(8,9,12,0.95); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:clamp(16px,3vw,40px); box-sizing:border-box; opacity:0; transition:opacity 250ms; }
+  #lb[hidden] { display:none; }
+  #lb-img { display:block; max-width:min(100%,1440px); max-height:calc(100vh - 140px); width:auto; height:auto; border:1px solid #20242c; border-radius:10px; }
+  .lb-row { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px 20px; max-width:100%; }
+  .lb-b { all:unset; cursor:pointer; height:44px; min-width:44px; padding:0 14px; box-sizing:border-box; display:grid; place-items:center; border:1px solid #3a3d44; border-radius:8px; color:#e9ebef; font:500 15px/1 Geist,sans-serif; }
+  .lb-b:hover { border-color:#949aa6; }
+  #lb-cap { font:500 15px/1.3 Geist,sans-serif; color:#e9ebef; text-align:center; min-width:0; }
+  @media (max-width:760px) {
+    .pb { grid-template-columns:minmax(0,1fr); }
+    .figs { grid-template-columns:1fr; }
+    .fig + .fig { padding-left:0; border-left:0; border-top:1px solid #20242c; margin-top:24px; }
+    th, td { padding:12px 12px; }
   }
+  @media (prefers-reduced-motion: reduce) { .pz:hover { transform:none; } }
 </style>
 </head>
 <body>
-
-<header class="site-header">
-  <div class="container">
-    <a class="wordmark" href="index.html">Ryan Appuhamy</a>
-    <nav class="pill-nav" aria-label="Site">
-      <span class="pill-nav__indicator" aria-hidden="true"></span>
-      <a href="index.html#about">About</a>
-      <a href="index.html#projects" aria-current="page">Projects</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container">
-
-  <!-- HERO -->
-  <section class="hero">
-    <span class="kick rise" style="--i:0">Personal project · Markets research</span>
-    <h1 class="rise" style="--i:1">Reading the semiconductor cycle <span>from public data.</span></h1>
-    <p class="lede rise" style="--i:2">Chip demand moves in multi-year booms and busts. I built an index of that cycle from free official data, tested whether it improves forecasts of industry sales, and whether an investor could trade it.</p>
-    <div class="term" aria-hidden="true">
-      <span style="animation-delay:.05s">$ make all</span>
-      <span style="animation-delay:.42s"><b>billings</b> WSTS <i>✓</i></span>
-      <span style="animation-delay:.66s"><b>revenue</b> Taiwan chipmakers <i>✓</i></span>
-      <span style="animation-delay:.9s"><b>index</b> dynamic factor model <i>✓</i></span>
-      <span style="animation-delay:1.14s"><b>forecast</b> walk-forward <i>✓</i></span>
-      <span style="animation-delay:1.38s"><b>backtest</b> SOXX, 10 bps</span>
-    </div>
-    <div class="cta rise" style="--i:3">
-      <a class="btn btn--primary" href="#results">See the results</a>
-      <a class="btn btn--ghost" href="index.html#projects">All projects</a>
-    </div>
-    <figure class="frame frame--clip rise" style="--i:4">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">cycle index · 1987 to Sep 2026</span></div>
-      <div class="frame__body"><img src="img/semis-cycle.webp" width="2264" height="1294" alt="The semiconductor cycle index since 1987 with its phases and 22 turning points, over worldwide billings growth" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- RESULTS -->
-  <section id="results">
-    <div class="rise">
-      <span class="kick">Results</span>
-      <h2>A useful forecast, a strategy that does not beat the market</h2>
-      <p class="muted" style="margin-top:14px; max-width:46em">Every number below comes from data the model could have seen at the time: forecasts are made month by month with only what had been published.</p>
-    </div>
-    <div class="stats">
-      <div class="card stat rise" style="--i:1"><div class="stat__value">+3.6σ</div><div class="stat__label">The cycle index in Sep 2026, a record: chip sales were up 144% year on year by August</div></div>
-      <div class="card stat rise" style="--i:2"><div class="stat__value up">−17%</div><div class="stat__label">Forecast error at turning points, 3 months ahead, vs an autoregressive benchmark (2006–2025)</div></div>
-      <div class="card stat rise" style="--i:3"><div class="stat__value">0.65</div><div class="stat__label">Sharpe ratio of the timing strategy, vs 0.76 for buy and hold SOXX (2005–2026)</div></div>
-    </div>
-    <div class="card table-card rise" style="--i:4">
-      <table>
-        <thead><tr><th>Forecast of chip sales growth, 2006–2025</th><th class="num">Best model</th><th class="num">Error vs benchmark</th><th class="num">…at turning points</th></tr></thead>
-        <tbody>
-          <tr><td>This month</td><td class="num">ElasticNet</td><td class="num">+15%</td><td class="num">−2%</td></tr>
-          <tr class="best"><td>3 months ahead</td><td class="num">LightGBM</td><td class="num">−7%</td><td class="num">−17%</td></tr>
-          <tr><td>6 months ahead</td><td class="num">LightGBM</td><td class="num">−5%</td><td class="num">−8%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="muted rise" style="margin-top:14px; max-width:46em; font-size:14.5px">Negative means a smaller error than the autoregressive benchmark. For the current month the benchmark is hard to beat, since most of it is already known. Further ahead, the cycle index adds information: its 6-month change is the model's most important input at the 6-month horizon.</p>
-    <figure class="frame rise" style="--i:5; margin-top:22px">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">walk-forward · forecasts 3 months ahead</span></div>
-      <div class="frame__body"><img src="img/semis-nowcast.webp" width="2420" height="1320" alt="Walk-forward forecasts of chip sales growth three months ahead against the realised series, 2006 to 2026" loading="lazy" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- CYCLE -->
-  <section class="row">
-    <div class="txt rise">
-      <span class="kick">The index</span>
-      <h2>One number for the cycle, estimated rather than hand-weighted</h2>
-      <p>A dynamic factor model extracts what six indicators have in common: chip billings in four regions, Taiwan chipmakers' monthly revenue and semiconductor stock momentum. It tracks industry sales growth with a correlation of 0.93 since 1987.</p>
-      <ul class="ticks">
-        <li>Peaks and troughs dated with the <b>Bry–Boschan</b> rules used for business cycles: 22 since 1987</li>
-        <li>Each upswing splits into Early and Mid Cycle at its half-way point, each downswing into Late Cycle and Downturn</li>
-        <li>Growth measured in logs, so one extreme year cannot rewrite forty years of history</li>
-      </ul>
-    </div>
-    <div class="card table-card rise" style="--i:1">
-      <table>
-        <thead><tr><th>Recent phases</th><th class="num">From</th><th class="num">To</th><th class="num">Months</th></tr></thead>
-        <tbody>
-          <tr class="best"><td>Mid Cycle</td><td class="num">Jul 2025</td><td class="num">Sep 2026</td><td class="num">15</td></tr>
-          <tr><td>Early Cycle</td><td class="num">Mar 2023</td><td class="num">Jun 2025</td><td class="num">28</td></tr>
-          <tr><td>Downturn</td><td class="num">Jun 2022</td><td class="num">Feb 2023</td><td class="num">9</td></tr>
-          <tr><td>Late Cycle</td><td class="num">Jan 2022</td><td class="num">May 2022</td><td class="num">5</td></tr>
-          <tr><td>Mid Cycle</td><td class="num">Nov 2020</td><td class="num">Dec 2021</td><td class="num">14</td></tr>
-          <tr><td>Early Cycle</td><td class="num">May 2019</td><td class="num">Oct 2020</td><td class="num">18</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- DATA CHECK -->
-  <section class="row row--flip">
-    <div class="txt rise">
-      <span class="kick">Checking the data</span>
-      <h2>The "corrupt" data was the biggest boom on record</h2>
-      <p>An earlier version cut the 2026 data as an error: monthly sales jumps of 20–26%, never seen in 40 years. Checked against the industry association's monthly releases, the numbers were right.</p>
-      <ul class="ticks">
-        <li>WSTS's August 2026 figure, <b>$159.7bn</b> (3-month average), matches the SIA release exactly</li>
-        <li>The data is back in, and the 2026 boom is scored on its own instead of swamping 20 years of normal cycles</li>
-        <li>Every model misses the boom; tree models most, as they cannot forecast beyond the values they have seen</li>
-      </ul>
-    </div>
-    <figure class="frame rise" style="--i:1">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">backtest · SOXX, Sep 2005 to Sep 2026</span></div>
-      <div class="frame__body"><img src="img/semis-equity.webp" width="2050" height="1243" alt="Growth of one dollar and drawdowns: the timing strategy against buy and hold SOXX" loading="lazy" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- STRATEGY -->
-  <section>
-    <div class="rise">
-      <span class="kick">Strategy</span>
-      <h2>Timing the cycle cuts risk late and adds it back late</h2>
-      <p class="muted" style="margin-top:14px; max-width:46em">Hold more SOXX when the cycle signal is strong, less when it is weak (0 to 1.25x), rebalanced monthly after 10 bps costs. Chip stocks look ahead and price the cycle before it shows up in sales, so the signal arrives late.</p>
-    </div>
-    <div class="card table-card rise" style="--i:1">
-      <table>
-        <thead><tr><th>Sep 2005 – Sep 2026</th><th class="num">Cycle timing</th><th class="num">Buy &amp; hold SOXX</th></tr></thead>
-        <tbody>
-          <tr><td>Annual return</td><td class="num">14.8%</td><td class="num">18.4%</td></tr>
-          <tr><td>Annual volatility</td><td class="num">26.6%</td><td class="num">27.3%</td></tr>
-          <tr class="best"><td>Sharpe ratio</td><td class="num">0.65</td><td class="num">0.76</td></tr>
-          <tr><td>Worst drawdown</td><td class="num">−55%</td><td class="num">−60%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <ol class="pipe rise" style="--i:2">
-      <li><b>DSR</b>1.00: Sharpe above zero after the parameter search</li>
-      <li><b>PBO</b>14%: low risk of an overfit backtest</li>
-      <li><b>Real time</b>timing on the forecast beats timing on the index (0.96 vs 0.90)</li>
-    </ol>
-  </section>
-
-  <!-- BUILT WITH -->
-  <section class="built rise">
-    <span class="kick">Built with</span>
-    <div class="chips"><span class="chip">Python · pandas</span><span class="chip">statsmodels</span><span class="chip">LightGBM</span><span class="chip">DuckDB</span><span class="chip">pytest · CI</span><span class="chip">WSTS · FinMind · FRED</span></div>
-  </section>
-
-  <p class="disclaimer">A personal research project on free public data. Educational use only, not investment advice.</p>
-
+<div style="overflow-x:clip">
+<header><div class="wrap">
+<a class="back" href="index.html#projects">← All projects</a>
+<a class="name" href="index.html">Ryan Appuhamy</a>
+</div></header>
+<main class="wrap">
+<section class="hero">
+<div data-r="1" class="eyebrow">Personal project · Markets research</div>
+<h1 data-r="1">Reading the semiconductor cycle from public data</h1>
+<p data-r="1" class="lede">Chip demand moves in multi-year booms and busts. The project builds an index of that cycle from free official data, tests whether it improves forecasts of industry sales, and whether an investor could trade it.</p>
+<div data-r="1" class="tags"><span class="tag">Python · statsmodels · LightGBM</span><span class="tag">WSTS · Taiwan revenue · FRED</span><span class="tag">Walk-forward, 2006 – 2025</span></div>
+<div data-r="1" class="figs"><div class="fig"><div class="fig-v">+3.6σ</div><div class="fig-l">the cycle index in September 2026, a record: chip sales +144% year on year</div></div><div class="fig"><div class="fig-v">−17%</div><div class="fig-l">forecast error at turning points, 3 months ahead, vs a simple benchmark</div></div><div class="fig"><div class="fig-v">0.65</div><div class="fig-l">Sharpe ratio of the timing strategy, vs 0.76 for buy and hold</div></div></div>
+</section>
+<section aria-label="Project">
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">01 / 06</span>
+<h2>One number for the cycle</h2>
+<p>A dynamic factor model extracts what six indicators have in common: chip sales in four regions, Taiwan chipmakers’ monthly revenue and semiconductor stocks. It tracks industry sales growth with a correlation of 0.93 since 1987.</p><p>Peaks and troughs are dated with the Bry–Boschan rules used for business cycles. Each upswing splits into Early and Mid Cycle at its half-way point, each downswing into Late Cycle and Downturn.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="0" aria-label="Open full screen: The semiconductor cycle index since 1987, with its phases and 22 turning points"><img src="img/semis-cycle.webp" alt="The semiconductor cycle index since 1987, with its phases and 22 turning points" width="2264" height="1294" loading="eager"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">02 / 06</span>
+<h2>Better forecasts where they matter</h2>
+<p>Sales growth is forecast every month with only the data published by then. For the current month a simple autoregression is hard to beat, since most of it is already known.</p><p>Further ahead the cycle index adds information, most of all at turning points, where a forecast is worth the most.</p>
+</div>
+<div class="pb-r"><div class="tbl"><table><thead><tr><th>Change in error vs benchmark, 2006–2025</th><th>Overall</th><th>At turning points</th></tr></thead><tbody><tr><td>This month</td><td>+15%</td><td>−2%</td></tr><tr class=best><td>3 months ahead</td><td>−7%</td><td>−17%</td></tr><tr><td>6 months ahead</td><td>−5%</td><td>−8%</td></tr></tbody></table></div></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">03 / 06</span>
+<h2>Forecasts against what happened</h2>
+<p>Three months ahead, the models follow the cycle closely from 2006 to 2025.</p><p>2026 is scored on its own: sales grew 144% in a year, far outside anything in the data, and every model misses it. Tree models miss it most, because they cannot forecast beyond the values they were trained on.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="1" aria-label="Open full screen: Forecasts three months ahead against realised chip sales growth, 2006 to 2026"><img src="img/semis-nowcast.webp" alt="Forecasts three months ahead against realised chip sales growth, 2006 to 2026" width="2420" height="1320" loading="lazy"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">04 / 06</span>
+<h2>The “corrupt” data was the biggest boom on record</h2>
+<p>An earlier version cut the 2026 data as an error: monthly sales jumps of 20–26%, never seen in 40 years.</p><p>Checked against the industry association’s monthly releases, the numbers were right. The data is back in, and measuring growth in logs keeps one extreme year from rewriting forty years of cycle history.</p>
+</div>
+<div class="pb-r"><div class="tbl"><table><thead><tr><th>August 2026, worldwide chip sales</th><th>3-month average</th></tr></thead><tbody><tr><td>WSTS billings report</td><td>$159.7bn</td></tr><tr><td>SIA monthly release</td><td>$159.7bn</td></tr><tr><td>Change vs August 2025</td><td>+144%</td></tr></tbody></table></div></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">05 / 06</span>
+<h2>Timing the cycle cuts risk late and adds it back late</h2>
+<p>The strategy holds more SOXX when the cycle signal is strong and less when it is weak, rebalanced monthly after costs. It trims the 2008 loss but recovers more slowly, and earns less than buy and hold.</p><p>Chip stocks look ahead and price the cycle before it shows up in sales. Overfitting checks over the 16 parameter sets tried (deflated Sharpe 1.00, PBO 14%) confirm the result is not luck.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="2" aria-label="Open full screen: Growth of one dollar and drawdowns: timing strategy against buy and hold SOXX"><img src="img/semis-equity.webp" alt="Growth of one dollar and drawdowns: timing strategy against buy and hold SOXX" width="2050" height="1243" loading="lazy"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">06 / 06</span>
+<h2>Strategy against buy and hold</h2>
+<p>September 2005 to September 2026, after 10 bps trading costs. A de-risking rule, not a source of extra return.</p>
+</div>
+<div class="pb-r"><div class="tbl"><table><thead><tr><th></th><th>Cycle timing</th><th>Buy & hold SOXX</th></tr></thead><tbody><tr><td>Annual return</td><td>14.8%</td><td>18.4%</td></tr><tr><td>Annual volatility</td><td>26.6%</td><td>27.3%</td></tr><tr class=best><td>Sharpe ratio</td><td>0.65</td><td>0.76</td></tr><tr><td>Worst drawdown</td><td>−55%</td><td>−60%</td></tr></tbody></table></div></div>
+</article>
+</section>
+<section class="closing">
+<p data-r="1">A personal research project on free public data. Educational use only, not investment advice.</p>
+<div data-r="1"><a class="btn" href="index.html#projects">See all projects</a></div>
+</section>
 </main>
-
-<footer class="site-footer">
-  <div class="container">
-    <a href="index.html">Ryan Appuhamy</a>
-    <a href="index.html#projects">All projects</a>
-    <span class="push">© 2026</span>
-  </div>
-</footer>
-
-<script src="js/site.js"></script>
+<footer><div class="wrap">© 2026 Ryan Appuhamy</div></footer>
+</div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Chart full screen" hidden>
+<img id="lb-img" alt="">
+<div class="lb-row">
+<button type="button" id="lb-prev" class="lb-b" aria-label="Previous">←</button>
+<span id="lb-cap"></span>
+<button type="button" id="lb-next" class="lb-b" aria-label="Next">→</button>
+<button type="button" id="lb-x" class="lb-b" aria-label="Close">Close</button>
+</div>
+</div>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = Array.prototype.slice.call(document.querySelectorAll('[data-r]'));
+  if (!reduce && 'IntersectionObserver' in window) {
+    els.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(28px)'; });
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var el=e.target; el.style.transition='opacity 800ms cubic-bezier(.22,1,.36,1), transform 900ms cubic-bezier(.22,1,.36,1)'; el.style.opacity='1'; el.style.transform='none'; io.unobserve(el); }); }, { rootMargin:'0px 0px -6% 0px' });
+    els.forEach(function(el, i){ if (el.getBoundingClientRect().top < innerHeight) el.style.transitionDelay = (i*80)+'ms'; io.observe(el); });
+  }
+  var shots = Array.prototype.slice.call(document.querySelectorAll('.pz'));
+  var lb = document.getElementById('lb'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  var cur = 0, last = null;
+  function set(i){ cur = (i + shots.length) % shots.length; var s = shots[cur].querySelector('img'); img.src = s.src; img.alt = s.alt; cap.textContent = String(cur+1).padStart(2,'0') + ' / ' + String(shots.length).padStart(2,'0') + ' · ' + s.alt; }
+  function open(i){ last = document.activeElement; set(i); lb.hidden = false; document.body.style.overflow='hidden'; requestAnimationFrame(function(){ lb.style.opacity='1'; }); document.getElementById('lb-x').focus(); }
+  function close(){ lb.style.opacity='0'; document.body.style.overflow=''; setTimeout(function(){ lb.hidden = true; }, reduce?0:250); if (last) last.focus(); }
+  shots.forEach(function(b){ b.addEventListener('click', function(){ open(+b.getAttribute('data-i')); }); });
+  document.getElementById('lb-x').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', function(){ set(cur-1); });
+  document.getElementById('lb-next').addEventListener('click', function(){ set(cur+1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){ if (lb.hidden) return; if (e.key==='Escape') close(); else if (e.key==='ArrowLeft') set(cur-1); else if (e.key==='ArrowRight') set(cur+1); });
+})();
+</script>
 </body>
 </html>

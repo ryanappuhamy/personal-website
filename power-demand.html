@@ -16,242 +16,163 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/site.css">
-<script>document.documentElement.classList.add("js")</script>
 <style>
-  main { display: flex; flex-direction: column; gap: 88px; padding-bottom: 56px; }
-
-  .kick { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-bright); }
-
-  /* Hero */
-  .hero { padding-top: 56px; }
-  .hero h1 { margin-top: 14px; max-width: 15em; font-size: clamp(38px, 6.4vw, 60px); font-weight: 600; line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; }
-  .hero h1 span { color: var(--muted); }
-  .lede { margin-top: 20px; max-width: 40em; font-size: 17px; line-height: 1.6; color: var(--muted); }
-  .term { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 12.5px; color: var(--faint); }
-  .term span { opacity: 0; transform: translateY(3px); animation: tok 0.5s ease forwards; }
-  .term b { color: var(--accent-bright); font-weight: 500; }
-  .term i { font-style: normal; color: var(--up); }
-  @keyframes tok { to { opacity: 1; transform: none; } }
-  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-  .hero .frame { margin-top: 44px; }
-
-  /* Headline numbers */
-  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
-  .stat { padding: 20px; }
-  .stat__value { font-size: 34px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
-  .stat__label { margin-top: 8px; font-size: 13.5px; color: var(--muted); line-height: 1.55; }
-
-  /* Two-column text blocks */
-  .row { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
-  .row--flip { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
-  .row--flip > .txt { order: 2; }
-  h2 { margin-top: 10px; font-size: clamp(26px, 3.4vw, 34px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; }
-  .txt p { margin-top: 14px; color: var(--muted); font-size: 15.5px; }
-  .ticks { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
-  .ticks li { position: relative; padding-left: 18px; font-size: 14.5px; line-height: 1.55; }
-  .ticks li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
-  .ticks b { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--muted); }
-
-  /* Tables */
-  .pipe { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; font-family: var(--font-mono); font-size: 12.5px; }
-  .pipe li { padding: 7px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--muted); }
-  .pipe li b { color: var(--accent-bright); font-weight: 500; margin-right: 8px; }
-  .table-card { margin-top: 12px; padding: 4px 18px; overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { text-align: left; padding: 13px 12px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
-  tr:last-child td { border-bottom: 0; }
-  th { font-size: 12px; font-weight: 500; color: var(--muted); }
-  td.num, th.num { text-align: right; font-family: var(--font-mono); white-space: nowrap; }
-  tr.best td { font-weight: 600; }
-  td .muted { font-weight: 400; }
-
-  /* Built with */
-  .built { text-align: center; }
-  .built .chips { justify-content: center; margin-top: 14px; }
-  .built .chip { font-size: 12.5px; padding: 5px 14px; }
-
-  .disclaimer { font-size: 13px; color: var(--faint); max-width: 44em; }
-
-  @media (max-width: 860px) {
-    main { gap: 64px; }
-    .row, .row--flip { grid-template-columns: 1fr; gap: 24px; }
-    .row--flip > .txt { order: 0; }
-    .hero { padding-top: 32px; }
-    .stats { grid-template-columns: 1fr; }
+  html { background:#08090c; }
+  body { margin:0; background:#08090c; color:#e9ebef; -webkit-font-smoothing:antialiased; font-family:Geist,system-ui,-apple-system,'Segoe UI',sans-serif; }
+  a { color:#e9ebef; } a:hover { color:#fff; }
+  ::selection { background:#e9ebef; color:#08090c; }
+  .wrap { max-width:1200px; margin:0 auto; padding:0 clamp(20px,5vw,48px); }
+  header { position:sticky; top:0; z-index:20; background:rgba(8,9,12,0.82); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid #20242c; }
+  header .wrap { min-height:64px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0 24px; }
+  .back { font:500 15px/1 Geist,sans-serif; color:#949aa6; text-decoration:none; padding:14px 0; }
+  .back:hover { color:#e9ebef; }
+  .name { font:600 17px/1 Geist,sans-serif; letter-spacing:-0.01em; text-decoration:none; padding:12px 0; }
+  .hero { padding:clamp(56px,9vw,110px) 0 clamp(40px,6vw,72px); }
+  .eyebrow { font:600 14px/1 Geist,sans-serif; color:#8ea5ff; }
+  h1 { margin:18px 0 0; max-width:980px; font:600 clamp(38px,6vw,84px)/1.04 Geist,sans-serif; letter-spacing:-0.045em; text-wrap:balance; }
+  .lede { margin:24px 0 0; max-width:760px; font:400 clamp(17px,1.7vw,21px)/1.55 Geist,sans-serif; color:#949aa6; text-wrap:pretty; }
+  .tags { margin-top:clamp(28px,4vw,40px); display:flex; flex-wrap:wrap; gap:10px; }
+  .tag { display:inline-flex; align-items:center; padding:9px 14px; border:1px solid #20242c; border-radius:8px; background:#0f1116; font:500 14px/1 Geist,sans-serif; color:#e9ebef; }
+  .figs { margin-top:clamp(40px,6vw,64px); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid #20242c; }
+  .fig { padding:24px 24px 0 0; }
+  .fig + .fig { padding-left:24px; border-left:1px solid #20242c; }
+  .fig-v { font:600 clamp(30px,3.6vw,44px)/1 Geist,sans-serif; letter-spacing:-0.035em; }
+  .fig-l { margin-top:12px; max-width:30ch; font:400 15px/1.5 Geist,sans-serif; color:#949aa6; }
+  .pb { display:grid; grid-template-columns:minmax(240px,1fr) minmax(0,800px); justify-content:space-between; gap:clamp(20px,3vw,48px); align-items:start; padding:clamp(40px,5vw,64px) 0; border-top:1px solid #20242c; }
+  .pb-t { display:flex; flex-direction:column; gap:12px; max-width:420px; }
+  .num { font:400 13px/1 'Geist Mono',monospace; color:#949aa6; }
+  h2 { margin:0; font:600 clamp(22px,2.4vw,30px)/1.2 Geist,sans-serif; letter-spacing:-0.025em; text-wrap:balance; }
+  .pb-t p { margin:0; font:400 clamp(16px,1.5vw,18px)/1.55 Geist,sans-serif; color:#949aa6; text-wrap:pretty; }
+  .pb-t p b { color:#e9ebef; font-weight:500; }
+  .pb-r { min-width:0; }
+  .pz { all:unset; box-sizing:border-box; min-width:0; display:block; width:100%; max-width:800px; cursor:zoom-in; border:1px solid #20242c; border-radius:12px; overflow:hidden; background:#0f1116; transition:border-color 250ms, transform 400ms cubic-bezier(.22,1,.36,1); }
+  .pz img { display:block; width:100%; height:auto; }
+  .pz:hover { border-color:#3a3d44; transform:translateY(-3px); }
+  .pz:focus-visible { outline:2px solid #8ea5ff; outline-offset:3px; }
+  .tbl { border:1px solid #20242c; border-radius:12px; background:#0f1116; overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font:400 15px/1.4 Geist,sans-serif; }
+  th, td { text-align:right; padding:14px 18px; border-bottom:1px solid #20242c; white-space:nowrap; }
+  th:first-child, td:first-child { text-align:left; white-space:normal; }
+  td:not(:first-child) { font-family:'Geist Mono',monospace; font-size:14px; }
+  th { font:500 13px/1.3 Geist,sans-serif; color:#949aa6; }
+  tbody tr:last-child td { border-bottom:0; }
+  tr.best td { color:#8ea5ff; }
+  .closing { padding:clamp(72px,10vw,130px) 0; border-top:1px solid #20242c; }
+  .closing p { margin:0 0 28px; max-width:640px; font:400 15px/1.55 Geist,sans-serif; color:#949aa6; }
+  .btn { display:inline-flex; align-items:center; padding:16px 26px; border-radius:8px; background:#8ea5ff; color:#08090c; border:1px solid #8ea5ff; font:600 16px/1 Geist,sans-serif; text-decoration:none; transition:background 200ms, border-color 200ms; }
+  .btn:hover { background:#b4c3ff; border-color:#b4c3ff; color:#08090c; }
+  footer { border-top:1px solid #20242c; }
+  footer .wrap { padding-top:28px; padding-bottom:28px; font:400 14px/1.4 Geist,sans-serif; color:#949aa6; }
+  #lb { position:fixed; inset:0; z-index:50; background:rgba(8,9,12,0.95); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:clamp(16px,3vw,40px); box-sizing:border-box; opacity:0; transition:opacity 250ms; }
+  #lb[hidden] { display:none; }
+  #lb-img { display:block; max-width:min(100%,1440px); max-height:calc(100vh - 140px); width:auto; height:auto; border:1px solid #20242c; border-radius:10px; }
+  .lb-row { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px 20px; max-width:100%; }
+  .lb-b { all:unset; cursor:pointer; height:44px; min-width:44px; padding:0 14px; box-sizing:border-box; display:grid; place-items:center; border:1px solid #3a3d44; border-radius:8px; color:#e9ebef; font:500 15px/1 Geist,sans-serif; }
+  .lb-b:hover { border-color:#949aa6; }
+  #lb-cap { font:500 15px/1.3 Geist,sans-serif; color:#e9ebef; text-align:center; min-width:0; }
+  @media (max-width:760px) {
+    .pb { grid-template-columns:minmax(0,1fr); }
+    .figs { grid-template-columns:1fr; }
+    .fig + .fig { padding-left:0; border-left:0; border-top:1px solid #20242c; margin-top:24px; }
+    th, td { padding:12px 12px; }
   }
+  @media (prefers-reduced-motion: reduce) { .pz:hover { transform:none; } }
 </style>
 </head>
 <body>
-
-<header class="site-header">
-  <div class="container">
-    <a class="wordmark" href="index.html">Ryan Appuhamy</a>
-    <nav class="pill-nav" aria-label="Site">
-      <span class="pill-nav__indicator" aria-hidden="true"></span>
-      <a href="index.html#about">About</a>
-      <a href="index.html#projects" aria-current="page">Projects</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container">
-
-  <!-- HERO -->
-  <section class="hero">
-    <span class="kick rise" style="--i:0">Personal project · Forecasting</span>
-    <h1 class="rise" style="--i:1">Forecasting Swiss electricity demand, <span>a day ahead.</span></h1>
-    <p class="lede rise" style="--i:2">Tomorrow's demand moves tomorrow's power price, and the day-ahead auction closes at noon. I built a model that forecasts Switzerland's hourly load for the next day, and tested it with only the information a trader would have at 12:00.</p>
-    <div class="term" aria-hidden="true">
-      <span style="animation-delay:.05s">$ forecast CH --for tomorrow</span>
-      <span style="animation-delay:.42s"><b>cut-off</b> D-1 12:00</span>
-      <span style="animation-delay:.66s"><b>load</b> ENTSO-E <i>✓</i></span>
-      <span style="animation-delay:.9s"><b>weather</b> GFS forecast <i>✓</i></span>
-      <span style="animation-delay:1.14s"><b>model</b> LightGBM <i>✓</i></span>
-      <span style="animation-delay:1.38s"><b>24</b> hourly values</span>
-    </div>
-    <div class="cta rise" style="--i:3">
-      <a class="btn btn--primary" href="#results">See the results</a>
-      <a class="btn btn--ghost" href="index.html#projects">All projects</a>
-    </div>
-    <figure class="frame frame--clip rise" style="--i:4">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">walk-forward · monthly error, Apr 2021 to Dec 2024</span></div>
-      <div class="frame__body"><img src="img/power-monthly-mape.webp" width="2860" height="1040" alt="Monthly forecast error: the model stays below the naive baseline in every month; Swissgrid, shown for Jan to Aug 2023 only, is lower still" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- RESULTS -->
-  <section id="results">
-    <div class="rise">
-      <span class="kick">Results</span>
-      <h2>A quarter better than the naive forecast, half as good as the grid operator</h2>
-      <p class="muted" style="margin-top:14px; max-width:46em">Scored on 45 months the model never saw, retrained every month on the past only. Every method is scored on the same clean hours.</p>
-    </div>
-    <div class="stats">
-      <div class="card stat rise" style="--i:1"><div class="stat__value">5.4%</div><div class="stat__label">Average hourly error (MAPE), Apr 2021 to Dec 2024</div></div>
-      <div class="card stat rise" style="--i:2"><div class="stat__value up">−26%</div><div class="stat__label">Error vs the naive forecast "same hour last week" (MAE, 366 vs 494 MW)</div></div>
-      <div class="card stat rise" style="--i:3"><div class="stat__value">2.9%</div><div class="stat__label">Swissgrid's own error over Jan to Aug 2023, the only period its published forecast is usable</div></div>
-    </div>
-    <div class="card table-card rise" style="--i:4">
-      <table>
-        <thead><tr><th>Method</th><th class="num">Apr 2021 – Dec 2024</th><th class="num">Jan – Aug 2023</th></tr></thead>
-        <tbody>
-          <tr><td>Naive: same hour, one week earlier</td><td class="num">7.17%</td><td class="num">7.16%</td></tr>
-          <tr class="best"><td>LightGBM, weather forecasts <span class="muted">(this project)</span></td><td class="num">5.41%</td><td class="num">5.52%</td></tr>
-          <tr><td>Swissgrid day-ahead forecast</td><td class="num">–</td><td class="num">2.90%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="muted rise" style="margin-top:14px; max-width:46em; font-size:14.5px">Swissgrid is clearly better, as it should be: it has weather forecasts for the whole country, metered data, intraday updates and knowledge of large consumers. The model beats the naive forecast in every year.</p>
-  </section>
-
-  <!-- DATA QUALITY -->
-  <section class="row">
-    <div class="txt rise">
-      <span class="kick">Data quality</span>
-      <h2>The first result was too good, so I checked the data</h2>
-      <p>The first run said the model beat Swissgrid. Before believing it, I compared every series month by month. Both official sources had problems.</p>
-      <ul class="ticks">
-        <li>Swissgrid's published forecast is a <b>copy of the actual load</b> from Sep 2021 to Dec 2022 (a fake 0% error) and broken from Sep 2023. It is compared only on Jan to Aug 2023</li>
-        <li>A few load hours are corrupted: a value frozen for 10 hours, a December weekday at 40% of normal, summer spikes at winter-peak level</li>
-        <li>A fixed floor ("below 4,200 MW is wrong") removed real summer nights and missed a corrupted day at 4,500 MW. Each hour is judged instead <b>against its own normal</b>: the median of the same hour and weekday, 1 and 2 weeks either side</li>
-        <li>62 hours removed out of 52,608 (0.12%), each logged with its reason</li>
-      </ul>
-    </div>
-    <figure class="frame rise" style="--i:1">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">data quality · ENTSO-E, Switzerland</span></div>
-      <div class="frame__body"><img src="img/power-data-quality.webp" width="2860" height="1950" alt="Top: 5 December 2024 reported at less than half its normal load, removed. Bottom: Swissgrid's monthly forecast error, plausible only from January to August 2023" loading="lazy" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- REALISTIC SETUP -->
-  <section class="row row--flip">
-    <div class="txt rise">
-      <span class="kick">Realistic setup</span>
-      <h2>Only what is known at noon the day before</h2>
-      <p>A forecast that quietly uses information from the future looks better than it is. Two corrections made the test honest, at a measured cost.</p>
-      <ul class="ticks">
-        <li>Load: the latest hour used is 10:00 on the day before. "Same hour yesterday" is gone: at noon, yesterday's evening has not happened yet</li>
-        <li>Weather: trained on observed temperature, tested on the <b>archived forecast</b> made about 48 hours earlier, as in production</li>
-        <li>Surprise: switching to weather forecasts barely moved the error. Recent load already carries most of the weather signal</li>
-      </ul>
-    </div>
-    <div class="card table-card rise" style="--i:1">
-      <table>
-        <thead><tr><th>Same hours, three setups</th><th class="num">MAPE</th></tr></thead>
-        <tbody>
-          <tr><td>"Same hour yesterday" as input, observed weather</td><td class="num">5.11%</td></tr>
-          <tr><td>Only load known at 12:00 the day before</td><td class="num">5.40%</td></tr>
-          <tr class="best"><td>+ weather forecasts instead of observed weather</td><td class="num">5.41%</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- METHOD -->
-  <section>
-    <div class="rise">
-      <span class="kick">Method</span>
-      <h2>Retrained every month, scored on the next</h2>
-      <p class="muted" style="margin-top:14px; max-width:46em">Walk-forward validation: train on everything before a month, forecast every hour of that month, move one month forward. 45 folds cover every season and never use the future to predict the past.</p>
-    </div>
-    <ol class="pipe rise" style="--i:1">
-      <li><b>1</b>Fetch load &amp; TSO forecast</li>
-      <li><b>2</b>Fetch weather, observed &amp; forecast</li>
-      <li><b>3</b>Remove corrupted hours</li>
-      <li><b>4</b>Features at the noon cut-off</li>
-      <li><b>5</b>Walk-forward, 45 folds</li>
-      <li><b>6</b>Score vs naive &amp; Swissgrid</li>
-    </ol>
-    <div class="card table-card rise" style="--i:2">
-      <table>
-        <thead><tr><th>Features</th><th>What the model sees</th></tr></thead>
-        <tbody>
-          <tr><td>Calendar</td><td class="muted">Hour, weekday, month, weekend, Zurich holidays: the daily and weekly rhythm of human activity</td></tr>
-          <tr><td>Recent load</td><td class="muted">Last known value, 24-hour and 7-day mean as of the cut-off, same hour 2 and 7 days earlier</td></tr>
-          <tr><td>Temperature</td><td class="muted">Forecast temperature, heating and cooling degree-hours (the V shape of demand), 24-hour mean</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- LIMITATIONS -->
-  <section class="row">
-    <div class="txt rise">
-      <span class="kick">Limitations</span>
-      <h2>What this model does not know</h2>
-      <ul class="ticks">
-        <li>One city's temperature stands in for the whole country</li>
-        <li>The Swissgrid comparison covers eight months only</li>
-        <li>Error rises from 2023 for every method, possibly a change in how the load is reported</li>
-        <li>No embedded solar, prices or industrial calendar</li>
-      </ul>
-    </div>
-    <figure class="frame rise" style="--i:1">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">one winter week · 16–22 Jan 2023</span></div>
-      <div class="frame__body"><img src="img/power-example-week.webp" width="2860" height="1040" alt="One winter week: actual load, the model and Swissgrid's forecast follow the same daily cycle" loading="lazy" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- BUILT WITH -->
-  <section class="built rise">
-    <span class="kick">Built with</span>
-    <div class="chips"><span class="chip">Python · pandas</span><span class="chip">LightGBM</span><span class="chip">ENTSO-E API</span><span class="chip">Open-Meteo</span><span class="chip">matplotlib</span></div>
-  </section>
-
-  <p class="disclaimer">A personal project on public data (ENTSO-E Transparency Platform, Open-Meteo).</p>
-
+<div style="overflow-x:clip">
+<header><div class="wrap">
+<a class="back" href="index.html#projects">← All projects</a>
+<a class="name" href="index.html">Ryan Appuhamy</a>
+</div></header>
+<main class="wrap">
+<section class="hero">
+<div data-r="1" class="eyebrow">Personal project · Forecasting</div>
+<h1 data-r="1">Swiss power demand, forecast a day ahead</h1>
+<p data-r="1" class="lede">Tomorrow’s demand moves tomorrow’s power price, and the day-ahead auction closes at noon. The model forecasts Switzerland’s 24 hourly loads for the next day using only what a trader would know at 12:00, and is tested over 45 months it never saw.</p>
+<div data-r="1" class="tags"><span class="tag">Python · pandas · LightGBM</span><span class="tag">ENTSO-E · Open-Meteo</span><span class="tag">Walk-forward, Apr 2021 – Dec 2024</span></div>
+<div data-r="1" class="figs"><div class="fig"><div class="fig-v">5.4%</div><div class="fig-l">average hourly error (MAPE), Apr 2021 – Dec 2024</div></div><div class="fig"><div class="fig-v">−26%</div><div class="fig-l">error vs the naive forecast “same hour last week”</div></div><div class="fig"><div class="fig-v">2.9%</div><div class="fig-l">Swissgrid’s own error, Jan – Aug 2023: still twice as good</div></div></div>
+</section>
+<section aria-label="Project">
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">01 / 05</span>
+<h2>Results</h2>
+<p>Every method is scored on the same clean hours. The model beats the naive forecast in every year, but the grid operator’s forecast is clearly better.</p><p>That is expected: Swissgrid has weather forecasts for the whole country, metered data, intraday updates and knowledge of large consumers.</p>
+</div>
+<div class="pb-r"><div class="tbl"><table><thead><tr><th></th><th>Apr 2021 – Dec 2024</th><th>Jan – Aug 2023</th></tr></thead><tbody><tr><td>Naive: same hour, one week earlier</td><td>7.17%</td><td>7.16%</td></tr><tr class=best><td>This model, with weather forecasts</td><td>5.41%</td><td>5.52%</td></tr><tr><td>Swissgrid day-ahead forecast</td><td>–</td><td>2.90%</td></tr></tbody></table></div></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">02 / 05</span>
+<h2>Monthly error, out of sample</h2>
+<p>The model is retrained every month on the past only and scored on the next month: 45 months that cover every season.</p><p>Swissgrid appears only for January to August 2023, the one period where its published forecast is usable.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="0" aria-label="Open full screen: Monthly forecast error: model, naive baseline and Swissgrid"><img src="img/power-monthly-mape.webp" alt="Monthly forecast error: model, naive baseline and Swissgrid" width="2860" height="1040" loading="eager"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">03 / 05</span>
+<h2>The first result was too good, so I checked the data</h2>
+<p>The first run said the model beat Swissgrid. Comparing every series month by month showed why: from September 2021 to December 2022 the published Swissgrid forecast is a <b>copy of the actual load</b>, and from September 2023 it is broken.</p><p>A few load hours are corrupted too: a value frozen for 10 hours, a December weekday at 40% of normal. Each hour is judged against its own normal level, and 62 of 52,608 hours (0.12%) are removed, each logged with its reason.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="1" aria-label="Open full screen: A corrupted day, and Swissgrid’s forecast error month by month"><img src="img/power-data-quality.webp" alt="A corrupted day, and Swissgrid’s forecast error month by month" width="2860" height="1950" loading="lazy"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">04 / 05</span>
+<h2>Only what is known at noon the day before</h2>
+<p>A forecast that quietly uses information from the future looks better than it is. The load used as input stops at 10:00 the day before, and the weather is the archived forecast made about 48 hours earlier, not the weather that actually happened.</p><p>Switching to weather forecasts barely moved the error: recent load already carries most of the weather signal.</p>
+</div>
+<div class="pb-r"><div class="tbl"><table><thead><tr><th>Same hours, three setups</th><th>MAPE</th></tr></thead><tbody><tr><td>“Same hour yesterday” as input, observed weather</td><td>5.11%</td></tr><tr><td>Only load known at 12:00 the day before</td><td>5.40%</td></tr><tr class=best><td>+ weather forecasts instead of observed weather</td><td>5.41%</td></tr></tbody></table></div></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">05 / 05</span>
+<h2>One winter week</h2>
+<p>Actual load, the model and Swissgrid follow the same daily and weekly rhythm; the model misses more on unusual days.</p><p>Limits: one city’s temperature stands in for the whole country, the Swissgrid comparison covers eight months, and there is no embedded solar or price data.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="2" aria-label="Open full screen: One winter week: actual load, the model and Swissgrid"><img src="img/power-example-week.webp" alt="One winter week: actual load, the model and Swissgrid" width="2860" height="1040" loading="lazy"></button></div>
+</article>
+</section>
+<section class="closing">
+<p data-r="1">A personal project on public data from the ENTSO-E Transparency Platform and Open-Meteo.</p>
+<div data-r="1"><a class="btn" href="index.html#projects">See all projects</a></div>
+</section>
 </main>
-
-<footer class="site-footer">
-  <div class="container">
-    <a href="index.html">Ryan Appuhamy</a>
-    <a href="index.html#projects">All projects</a>
-    <span class="push">© 2026</span>
-  </div>
-</footer>
-
-<script src="js/site.js"></script>
+<footer><div class="wrap">© 2026 Ryan Appuhamy</div></footer>
+</div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Chart full screen" hidden>
+<img id="lb-img" alt="">
+<div class="lb-row">
+<button type="button" id="lb-prev" class="lb-b" aria-label="Previous">←</button>
+<span id="lb-cap"></span>
+<button type="button" id="lb-next" class="lb-b" aria-label="Next">→</button>
+<button type="button" id="lb-x" class="lb-b" aria-label="Close">Close</button>
+</div>
+</div>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = Array.prototype.slice.call(document.querySelectorAll('[data-r]'));
+  if (!reduce && 'IntersectionObserver' in window) {
+    els.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(28px)'; });
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var el=e.target; el.style.transition='opacity 800ms cubic-bezier(.22,1,.36,1), transform 900ms cubic-bezier(.22,1,.36,1)'; el.style.opacity='1'; el.style.transform='none'; io.unobserve(el); }); }, { rootMargin:'0px 0px -6% 0px' });
+    els.forEach(function(el, i){ if (el.getBoundingClientRect().top < innerHeight) el.style.transitionDelay = (i*80)+'ms'; io.observe(el); });
+  }
+  var shots = Array.prototype.slice.call(document.querySelectorAll('.pz'));
+  var lb = document.getElementById('lb'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  var cur = 0, last = null;
+  function set(i){ cur = (i + shots.length) % shots.length; var s = shots[cur].querySelector('img'); img.src = s.src; img.alt = s.alt; cap.textContent = String(cur+1).padStart(2,'0') + ' / ' + String(shots.length).padStart(2,'0') + ' · ' + s.alt; }
+  function open(i){ last = document.activeElement; set(i); lb.hidden = false; document.body.style.overflow='hidden'; requestAnimationFrame(function(){ lb.style.opacity='1'; }); document.getElementById('lb-x').focus(); }
+  function close(){ lb.style.opacity='0'; document.body.style.overflow=''; setTimeout(function(){ lb.hidden = true; }, reduce?0:250); if (last) last.focus(); }
+  shots.forEach(function(b){ b.addEventListener('click', function(){ open(+b.getAttribute('data-i')); }); });
+  document.getElementById('lb-x').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', function(){ set(cur-1); });
+  document.getElementById('lb-next').addEventListener('click', function(){ set(cur+1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){ if (lb.hidden) return; if (e.key==='Escape') close(); else if (e.key==='ArrowLeft') set(cur-1); else if (e.key==='ArrowRight') set(cur+1); });
+})();
+</script>
 </body>
 </html>
