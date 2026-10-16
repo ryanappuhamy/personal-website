@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Equity Research · Ryan Appuhamy</title>
+<title>Equity Research Platform · Ryan Appuhamy</title>
 <meta name="description" content="A full-stack equity research platform built from free, official data: Python pipeline, FastAPI, Next.js, Supabase Postgres.">
 <meta name="theme-color" content="#08090c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Equity Research Platform">
-<meta property="og:description" content="Institutional-style equity research, built from free, official data.">
+<meta property="og:description" content="Equity research notes, a portfolio tracker and a savings plan simulator, built from free, official data.">
 <meta property="og:url" content="https://ryanappuhamy.com/equity-research.html">
 <meta property="og:image" content="https://ryanappuhamy.com/img/shot-research.webp">
 <meta name="twitter:card" content="summary_large_image">
@@ -16,246 +16,196 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/site.css">
-<script>document.documentElement.classList.add("js")</script>
 <style>
-  main { display: flex; flex-direction: column; gap: 88px; padding-bottom: 56px; }
-
-  .kick { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-bright); }
-
-  /* Hero */
-  .hero { padding-top: 56px; }
-  .hero h1 { margin-top: 14px; max-width: 15em; font-size: clamp(38px, 6.4vw, 60px); font-weight: 600; line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; }
-  .hero h1 span { color: var(--muted); }
-  .lede { margin-top: 20px; max-width: 40em; font-size: 17px; line-height: 1.6; color: var(--muted); }
-  .term { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 12.5px; color: var(--faint); }
-  .term span { opacity: 0; transform: translateY(3px); animation: tok 0.5s ease forwards; }
-  .term b { color: var(--accent-bright); font-weight: 500; }
-  .term i { font-style: normal; color: var(--up); }
-  @keyframes tok { to { opacity: 1; transform: none; } }
-  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-  .hero .frame { margin-top: 44px; }
-
-  /* Two-column text blocks */
-  .row { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
-  .row--flip { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
-  .row--flip > .txt { order: 2; }
-  h2 { margin-top: 10px; font-size: clamp(26px, 3.4vw, 34px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; }
-  .txt p { margin-top: 14px; color: var(--muted); font-size: 15.5px; }
-  .ticks { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
-  .ticks li { position: relative; padding-left: 18px; font-size: 14.5px; line-height: 1.55; }
-  .ticks li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
-  .ticks code, .ticks b { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--muted); }
-  .shots { display: flex; flex-direction: column; gap: 12px; }
-
-  /* Under the hood */
-  .pipe { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; font-family: var(--font-mono); font-size: 12.5px; }
-  .pipe li { padding: 7px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--muted); }
-  .pipe li b { color: var(--accent-bright); font-weight: 500; margin-right: 8px; }
-  .table-card { margin-top: 12px; padding: 4px 18px; overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { text-align: left; padding: 13px 12px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
-  tr:last-child td { border-bottom: 0; }
-  th { font-size: 12px; font-weight: 500; color: var(--muted); }
-  td:first-child { font-weight: 600; white-space: nowrap; }
-  td:last-child { color: var(--muted); }
-
-  /* Built with */
-  .built { text-align: center; }
-  .built .chips { justify-content: center; margin-top: 14px; }
-  .built .chip { font-size: 12.5px; padding: 5px 14px; }
-
-  .disclaimer { font-size: 13px; color: var(--faint); max-width: 44em; }
-
-  @media (max-width: 860px) {
-    main { gap: 64px; }
-    .row, .row--flip { grid-template-columns: 1fr; gap: 24px; }
-    .row--flip > .txt { order: 0; }
-    .hero { padding-top: 32px; }
+  html { background:#08090c; }
+  body { margin:0; background:#08090c; color:#e9ebef; -webkit-font-smoothing:antialiased; font-family:Geist,system-ui,-apple-system,'Segoe UI',sans-serif; }
+  a { color:#e9ebef; } a:hover { color:#fff; }
+  ::selection { background:#e9ebef; color:#08090c; }
+  .wrap { max-width:1200px; margin:0 auto; padding:0 clamp(20px,5vw,48px); }
+  header { position:sticky; top:0; z-index:20; background:rgba(8,9,12,0.82); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid #20242c; }
+  header .wrap { min-height:64px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0 24px; }
+  .back { font:500 15px/1 Geist,sans-serif; color:#949aa6; text-decoration:none; padding:14px 0; }
+  .back:hover { color:#e9ebef; }
+  .name { font:600 17px/1 Geist,sans-serif; letter-spacing:-0.01em; text-decoration:none; padding:12px 0; }
+  .hero { padding:clamp(56px,9vw,110px) 0 clamp(40px,6vw,72px); }
+  .eyebrow { font:600 14px/1 Geist,sans-serif; color:#8ea5ff; }
+  h1 { margin:18px 0 0; max-width:980px; font:600 clamp(38px,6vw,84px)/1.04 Geist,sans-serif; letter-spacing:-0.045em; text-wrap:balance; }
+  .lede { margin:24px 0 0; max-width:760px; font:400 clamp(17px,1.7vw,21px)/1.55 Geist,sans-serif; color:#949aa6; text-wrap:pretty; }
+  .tags { margin-top:clamp(28px,4vw,40px); display:flex; flex-wrap:wrap; gap:10px; }
+  .tag { display:inline-flex; align-items:center; padding:9px 14px; border:1px solid #20242c; border-radius:8px; background:#0f1116; font:500 14px/1 Geist,sans-serif; color:#e9ebef; }
+  .figs { margin-top:clamp(40px,6vw,64px); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid #20242c; }
+  .fig { padding:24px 24px 0 0; }
+  .fig + .fig { padding-left:24px; border-left:1px solid #20242c; }
+  .fig-v { font:600 clamp(30px,3.6vw,44px)/1 Geist,sans-serif; letter-spacing:-0.035em; }
+  .fig-l { margin-top:12px; max-width:30ch; font:400 15px/1.5 Geist,sans-serif; color:#949aa6; }
+  .pb { display:grid; grid-template-columns:minmax(240px,1fr) minmax(0,800px); justify-content:space-between; gap:clamp(20px,3vw,48px); align-items:start; padding:clamp(40px,5vw,64px) 0; border-top:1px solid #20242c; }
+  .pb-t { display:flex; flex-direction:column; gap:12px; max-width:420px; }
+  .num { font:400 13px/1 'Geist Mono',monospace; color:#949aa6; }
+  h2 { margin:0; font:600 clamp(22px,2.4vw,30px)/1.2 Geist,sans-serif; letter-spacing:-0.025em; text-wrap:balance; }
+  .pb-t p { margin:0; font:400 clamp(16px,1.5vw,18px)/1.55 Geist,sans-serif; color:#949aa6; text-wrap:pretty; }
+  .pb-t p b { color:#e9ebef; font-weight:500; }
+  .pb-r { min-width:0; }
+  .pz { all:unset; box-sizing:border-box; min-width:0; display:block; width:100%; max-width:800px; cursor:zoom-in; border:1px solid #20242c; border-radius:12px; overflow:hidden; background:#0f1116; transition:border-color 250ms, transform 400ms cubic-bezier(.22,1,.36,1); }
+  .pz img { display:block; width:100%; height:auto; }
+  .pz:hover { border-color:#3a3d44; transform:translateY(-3px); }
+  .pz:focus-visible { outline:2px solid #8ea5ff; outline-offset:3px; }
+  .tbl { border:1px solid #20242c; border-radius:12px; background:#0f1116; overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font:400 15px/1.4 Geist,sans-serif; }
+  th, td { text-align:right; padding:14px 18px; border-bottom:1px solid #20242c; white-space:nowrap; }
+  th:first-child, td:first-child { text-align:left; white-space:normal; }
+  td:not(:first-child) { font-family:'Geist Mono',monospace; font-size:14px; }
+  th { font:500 13px/1.3 Geist,sans-serif; color:#949aa6; }
+  th.t, td.t { text-align:left; white-space:normal; font-family:Geist,sans-serif; }
+  td.t { font-size:15px; }
+  td.t { color:#949aa6; }
+  tbody tr:last-child td { border-bottom:0; }
+  tr.best td { color:#8ea5ff; }
+  .closing { padding:clamp(72px,10vw,130px) 0; border-top:1px solid #20242c; }
+  .closing p { margin:0 0 28px; max-width:640px; font:400 15px/1.55 Geist,sans-serif; color:#949aa6; }
+  .btn { display:inline-flex; align-items:center; padding:16px 26px; border-radius:8px; background:#8ea5ff; color:#08090c; border:1px solid #8ea5ff; font:600 16px/1 Geist,sans-serif; text-decoration:none; transition:background 200ms, border-color 200ms; }
+  .btn:hover { background:#b4c3ff; border-color:#b4c3ff; color:#08090c; }
+  .ctas { margin-top:clamp(28px,4vw,40px); display:flex; flex-wrap:wrap; gap:10px; }
+  .btn--ghost { background:transparent; color:#e9ebef; border-color:#3a3d44; }
+  .btn--ghost:hover { background:transparent; border-color:#949aa6; color:#e9ebef; }
+  footer { border-top:1px solid #20242c; }
+  footer .wrap { padding-top:28px; padding-bottom:28px; font:400 14px/1.4 Geist,sans-serif; color:#949aa6; }
+  #lb { position:fixed; inset:0; z-index:50; background:rgba(8,9,12,0.95); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:clamp(16px,3vw,40px); box-sizing:border-box; opacity:0; transition:opacity 250ms; }
+  #lb[hidden] { display:none; }
+  #lb-img { display:block; max-width:min(100%,1440px); max-height:calc(100vh - 140px); width:auto; height:auto; border:1px solid #20242c; border-radius:10px; }
+  .lb-row { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px 20px; max-width:100%; }
+  .lb-b { all:unset; cursor:pointer; height:44px; min-width:44px; padding:0 14px; box-sizing:border-box; display:grid; place-items:center; border:1px solid #3a3d44; border-radius:8px; color:#e9ebef; font:500 15px/1 Geist,sans-serif; }
+  .lb-b:hover { border-color:#949aa6; }
+  #lb-cap { font:500 15px/1.3 Geist,sans-serif; color:#e9ebef; text-align:center; min-width:0; }
+  .lb-n { font:400 13px/1 'Geist Mono',monospace; color:#949aa6; margin-right:14px; }
+  @media (max-width:760px) {
+    .pb { grid-template-columns:minmax(0,1fr); }
+    .figs { grid-template-columns:1fr; }
+    .fig + .fig { padding-left:0; border-left:0; border-top:1px solid #20242c; margin-top:24px; }
+    th, td { padding:12px 12px; }
   }
+  @media (prefers-reduced-motion: reduce) { .pz:hover { transform:none; } }
 </style>
 </head>
 <body>
+<div style="overflow-x:clip">
+<header><div class="wrap">
+<a class="back" href="index.html#projects">← All projects</a>
+<a class="name" href="index.html">Ryan Appuhamy</a>
+</div></header>
+<main class="wrap">
+<section class="hero">
+<div data-r="1" class="eyebrow">Personal project</div>
+<h1 data-r="1">An equity research tool for my own investing</h1>
+<p data-r="1" class="lede">I wanted proper research on the stocks I hold without paying for a terminal, so I built it on free, official data: SEC filings, Federal Reserve data and reported financials. It turns a ticker into a research note, and adds a portfolio tracker, a savings plan simulator and alerts.</p>
+<div data-r="1" class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Next.js</span><span class="tag">Supabase Postgres</span><span class="tag">SEC EDGAR</span><span class="tag">FRED</span><span class="tag">Finnhub</span></div>
+<div data-r="1" class="ctas"><a class="btn" href="https://research.ryanappuhamy.com" target="_blank" rel="noopener">Open the live app ↗</a></div>
 
-<header class="site-header">
-  <div class="container">
-    <a class="wordmark" href="index.html">Ryan Appuhamy</a>
-    <nav class="pill-nav" aria-label="Site">
-      <span class="pill-nav__indicator" aria-hidden="true"></span>
-      <a href="index.html#about">About</a>
-      <a href="index.html#projects" aria-current="page">Projects</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main class="container">
-
-  <!-- HERO -->
-  <section class="hero">
-    <span class="kick rise" style="--i:0">Personal project</span>
-    <h1 class="rise" style="--i:1">An equity research tool I built for <span>my own investing.</span></h1>
-    <p class="lede rise" style="--i:2">I wanted proper research on the stocks I hold without paying for a terminal, so I built it on free, official data: SEC filings, FRED and reported financials.</p>
-    <div class="term" aria-hidden="true">
-      <span style="animation-delay:.05s">$ research AAPL</span>
-      <span style="animation-delay:.42s"><b>prices</b> yfinance</span>
-      <span style="animation-delay:.66s"><b>fundamentals</b> Finnhub</span>
-      <span style="animation-delay:.9s"><b>filings</b> SEC&nbsp;EDGAR <i>✓</i></span>
-      <span style="animation-delay:1.14s"><b>macro</b> FRED <i>✓</i></span>
-      <span style="animation-delay:1.38s"><b>note</b> Gemini <i>✓</i></span>
-    </div>
-    <div class="cta rise" style="--i:3">
-      <a class="btn btn--primary" href="https://research.ryanappuhamy.com" target="_blank" rel="noopener">Open the live app ↗</a>
-      <a class="btn btn--ghost" href="https://github.com/ryanappuhamy" target="_blank" rel="noopener">Source on GitHub</a>
-    </div>
-    <figure class="frame frame--clip rise" style="--i:4">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">research.ryanappuhamy.com · Research report</span></div>
-      <div class="frame__body"><img src="img/shot-research.webp" width="2880" height="2000" alt="Research report for AAPL: price, 1-year change, 52-week range and chart" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- RESEARCH -->
-  <section class="row">
-    <div class="txt rise">
-      <span class="kick">Research report</span>
-      <h2>Fact and interpretation, kept apart</h2>
-      <p>Numbers from APIs and filings are stored as-is. The AI note is labelled, attributed, and instructed never to reference a figure that isn't in the input. Template output takes over if no model is reachable.</p>
-      <ul class="ticks">
-        <li>Six metric cards: valuation, growth, profitability, financial health, TTM financials</li>
-        <li>Insider transactions parsed from raw <b>Form&nbsp;4</b> XML: name, role, buy / sell, size, date</li>
-        <li>Earnings guidance pulled from the 8-K. The legal boilerplate is trimmed first, so the forward outlook survives the token budget</li>
-      </ul>
-    </div>
-    <figure class="frame rise" style="--i:1">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">…/?ticker=AAPL · fundamentals and insider activity</span></div>
-      <div class="frame__body"><img src="img/shot-research-cards.webp" width="2880" height="2160" alt="Fundamentals cards and SEC Form 4 insider activity for AAPL" loading="lazy" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- UNDER THE HOOD -->
-  <section>
-    <div class="rise">
-      <span class="kick">Under the hood</span>
-      <h2>One request, a seven-step pipeline</h2>
-      <p class="muted" style="margin-top:14px; max-width:46em">Every ticker lookup runs the same ordered workflow. Each step fails gracefully (a missing source returns a note, never a broken report) and results are cached in Postgres, so a repeat lookup is free.</p>
-    </div>
-    <ol class="pipe rise" style="--i:1">
-      <li><b>1</b>Price history &amp; stats</li>
-      <li><b>2</b>Fundamentals</li>
-      <li><b>3</b>Peer comparison</li>
-      <li><b>4</b>SEC insider activity</li>
-      <li><b>5</b>Transcript + AI read</li>
-      <li><b>6</b>Analyst consensus &amp; macro</li>
-      <li><b>7</b>AI research note</li>
-    </ol>
-    <div class="card table-card rise" style="--i:4">
-      <table>
-        <thead><tr><th>Source</th><th>Cost</th><th>What it provides</th></tr></thead>
-        <tbody>
-          <tr><td>SEC&nbsp;EDGAR</td><td><span class="badge badge--up">free</span></td><td>Form&nbsp;4 insider filings and 8-K earnings exhibits, the institutional layer most retail tools skip</td></tr>
-          <tr><td>yfinance</td><td><span class="badge badge--up">free</span></td><td>Daily prices, portfolio quotes, fallback fundamentals</td></tr>
-          <tr><td>Finnhub</td><td><span class="badge badge--up">free tier</span></td><td>Live quotes, analyst trends, earnings calendar, company news and IP-independent fundamentals for when cloud hosts get blocked</td></tr>
-          <tr><td>FRED</td><td><span class="badge badge--up">free</span></td><td>Fed funds rate, 10-year yield, CPI, unemployment</td></tr>
-          <tr><td>Gemini → Groq → Claude</td><td><span class="badge badge--accent">free-first</span></td><td>Research notes and weekly briefs. The chain only reaches a paid model if both free tiers fail</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section class="row">
-    <div class="txt rise">
-      <span class="kick">Portfolio</span>
-      <h2>Your portfolio, read like a fintech app</h2>
-      <p>Live prices and P&amp;L, with the number that matters first and the detail one tap away.</p>
-      <ul class="ticks">
-        <li>Scrubbable value chart vs the S&amp;P 500 and other indices</li>
-        <li>Portfolio health: return, risk, diversification and valuation, each in one plain sentence</li>
-        <li>Tax if you sold today, by country</li>
-        <li>Honest about the chart: it's a backtest of current holdings</li>
-      </ul>
-    </div>
-    <div class="shots">
-      <figure class="frame frame--clip rise" style="--i:1">
-        <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">…/portfolio</span></div>
-        <div class="frame__body"><img src="img/shot-portfolio.webp" width="2880" height="2000" alt="Portfolio: value, today's P&amp;L, scrubbable chart vs the S&amp;P 500 and holdings" loading="lazy" decoding="async"></div>
-      </figure>
-      <figure class="frame frame--clip rise" style="--i:2">
-        <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">…/portfolio · health</span></div>
-        <div class="frame__body"><img src="img/shot-portfolio-health.webp" width="2880" height="2000" alt="Portfolio health: return vs market, risk, diversification and valuation" loading="lazy" decoding="async"></div>
-      </figure>
-    </div>
-  </section>
-
-  <!-- SIMULATOR -->
-  <section class="row row--flip">
-    <div class="txt rise">
-      <span class="kick">Simulator</span>
-      <h2>What a monthly investment plan really does</h2>
-      <p>A dollar-cost-averaging simulator on 15 years of real monthly prices, for index ETFs or any stock you hold.</p>
-      <ul class="ticks">
-        <li>Historical mode vs a Monte Carlo projection (10th to 90th percentile)</li>
-        <li>Fees, inflation and capital-gains tax by country</li>
-      </ul>
-    </div>
-    <figure class="frame frame--clip rise" style="--i:1">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">…/simulator</span></div>
-      <div class="frame__body"><img src="img/shot-simulator.webp" width="2880" height="2000" alt="Investment plan simulator on 15 years of real prices" loading="lazy" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- ALERTS -->
-  <section class="row">
-    <div class="txt rise">
-      <span class="kick">Alerts</span>
-      <h2>Metric rules, checked against the live pipeline</h2>
-      <p>Price, P/E, revenue-growth or insider-filing thresholds. The list loads instantly; the condition check runs in the background and fills in the status in place.</p>
-      <ul class="ticks">
-        <li>Each alert reads as one line ("NVDA · Price above $230.00") with an OK or Triggered badge, so what needs attention is visible at a glance</li>
-      </ul>
-    </div>
-    <figure class="frame rise" style="--i:1">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">…/alerts</span></div>
-      <div class="frame__body"><img src="img/shot-alerts.webp" width="2880" height="1800" alt="Alerts with OK and Triggered status" loading="lazy" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- MACRO -->
-  <section class="row row--flip">
-    <div class="txt rise">
-      <span class="kick">Macro calendar</span>
-      <h2>The week's data releases, in context</h2>
-      <p>A dedicated view of upcoming US economic events: the releases the weekly brief keeps naming as near-term risks.</p>
-      <ul class="ticks">
-        <li>Actual vs. forecast for ISM, JOLTS, non-farm payrolls, CPI and more</li>
-      </ul>
-    </div>
-    <figure class="frame frame--clip rise" style="--i:1">
-      <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">…/macro</span></div>
-      <div class="frame__body"><img src="img/shot-macro.webp" width="2880" height="2000" alt="Macro calendar of upcoming US economic releases" loading="lazy" decoding="async"></div>
-    </figure>
-  </section>
-
-  <!-- BUILT WITH -->
-  <section class="built rise">
-    <span class="kick">Built with</span>
-    <div class="chips"><span class="chip">Python · FastAPI</span><span class="chip">Next.js 16</span><span class="chip">Supabase Postgres</span><span class="chip">Render</span><span class="chip">Vercel</span></div>
-  </section>
-
-  <p class="disclaimer">An educational project, not financial advice. Every number is traceable to a primary source (SEC&nbsp;EDGAR, FRED, reported financials); analyst figures are passed through with attribution.</p>
-
+</section>
+<section aria-label="Project">
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">01 / 08</span>
+<h2>Research report</h2>
+<p>Type a ticker and get a research note: price, one-year change, 52-week range and chart.</p><p>Numbers from filings and data providers are stored as they are. The written comment is generated separately, labelled, and told never to quote a figure that is not in its input. If no language model is reachable, a fixed template takes over.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="0" aria-label="Open full screen: Research report for AAPL: price, one-year change, 52-week range and chart"><img src="img/shot-research.webp" alt="Research report for AAPL: price, one-year change, 52-week range and chart" width="2880" height="2000" loading="eager"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">02 / 08</span>
+<h2>Fundamentals and insider trades</h2>
+<p>Six cards cover valuation, growth, profitability, financial health and the last twelve months of financials.</p><p>Insider purchases and sales are read directly from the Form 4 filings at the SEC: name, role, size and date. Earnings guidance is taken from the 8&#8209;K, with the legal boilerplate removed first.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="1" aria-label="Open full screen: Fundamentals and SEC Form 4 insider trades for AAPL"><img src="img/shot-research-cards.webp" alt="Fundamentals and SEC Form 4 insider trades for AAPL" width="2880" height="2160" loading="lazy"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">03 / 08</span>
+<h2>How a lookup works</h2>
+<p>Every ticker goes through the same seven steps: prices, fundamentals, peer comparison, insider trades, earnings call, analyst and macro data, and the written note.</p><p>If a source is missing, that section shows a note instead of breaking the report. Results are cached in Postgres, so a repeated lookup costs nothing.</p>
+</div>
+<div class="pb-r"><div class="tbl"><table><thead><tr><th>Source</th><th class="t">What it provides</th><th class="t">Cost</th></tr></thead><tbody><tr><td>SEC EDGAR</td><td class="t">Insider filings (Form&nbsp;4) and earnings releases (8&#8209;K)</td><td class="t">Free</td></tr><tr><td>yfinance</td><td class="t">Daily prices, portfolio quotes, backup fundamentals</td><td class="t">Free</td></tr><tr><td>Finnhub</td><td class="t">Live quotes, analyst trends, earnings calendar, news</td><td class="t">Free tier</td></tr><tr><td>FRED</td><td class="t">Policy rate, 10-year yield, inflation, unemployment</td><td class="t">Free</td></tr><tr><td>Gemini, Groq, Claude</td><td class="t">The written notes; a paid model only if the free ones fail</td><td class="t">Mostly free</td></tr></tbody></table></div></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">04 / 08</span>
+<h2>Portfolio</h2>
+<p>Value and today’s gain with live prices, a chart against the S&amp;P 500 and other indices, and the list of positions.</p><p>It also shows the tax due if everything were sold today, by country. The chart is a backtest of the current holdings, and the page says so.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="2" aria-label="Open full screen: Portfolio: value, today’s gain, chart against the S&amp;P 500 and holdings"><img src="img/shot-portfolio.webp" alt="Portfolio: value, today’s gain, chart against the S&amp;P 500 and holdings" width="2880" height="2000" loading="lazy"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">05 / 08</span>
+<h2>Portfolio health</h2>
+<p>Return against the market, risk, diversification and valuation, each explained in one plain sentence.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="3" aria-label="Open full screen: Portfolio health: return, risk, diversification and valuation"><img src="img/shot-portfolio-health.webp" alt="Portfolio health: return, risk, diversification and valuation" width="2880" height="2000" loading="lazy"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">06 / 08</span>
+<h2>Savings plan simulator</h2>
+<p>What a monthly investment would have returned over 15 years of real prices, for index funds or any stock in the portfolio, or a Monte Carlo projection from the 10th to the 90th percentile.</p><p>Fees, inflation and capital gains tax by country are included.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="4" aria-label="Open full screen: Savings plan simulator on 15 years of real prices"><img src="img/shot-simulator.webp" alt="Savings plan simulator on 15 years of real prices" width="2880" height="2000" loading="lazy"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">07 / 08</span>
+<h2>Alerts</h2>
+<p>Rules on price, price-to-earnings, revenue growth or insider filings. Each alert is one line with an OK or Triggered status, checked in the background against the live data.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="5" aria-label="Open full screen: Alerts with OK and Triggered status"><img src="img/shot-alerts.webp" alt="Alerts with OK and Triggered status" width="2880" height="1800" loading="lazy"></button></div>
+</article>
+<article data-r="1" class="pb">
+<div class="pb-t">
+<span class="num">08 / 08</span>
+<h2>Macro calendar</h2>
+<p>The week’s US economic releases (ISM, job openings, payrolls, inflation) with the published value against the forecast: the events the weekly brief flags as near-term risks.</p>
+</div>
+<div class="pb-r"><button type="button" class="pz" data-i="6" aria-label="Open full screen: Calendar of upcoming US economic releases"><img src="img/shot-macro.webp" alt="Calendar of upcoming US economic releases" width="2880" height="2000" loading="lazy"></button></div>
+</article>
+</section>
+<section class="closing">
+<p data-r="1">A personal project for educational use, not financial advice. Every number traces back to a primary source; analyst figures are shown with their source.</p>
+<div data-r="1"><div data-r="1" class="ctas"><a class="btn" href="index.html#projects">See all projects</a></div></div>
+</section>
 </main>
-
-<footer class="site-footer">
-  <div class="container">
-    <a href="index.html">Ryan Appuhamy</a>
-    <a href="https://research.ryanappuhamy.com" target="_blank" rel="noopener">Live app ↗</a>
-    <a href="https://github.com/ryanappuhamy/equity-research-frontend" target="_blank" rel="noopener">Frontend repo ↗</a>
-    <a href="https://github.com/ryanappuhamy/equity-research-backend-ryanappuhamy" target="_blank" rel="noopener">Backend repo ↗</a>
-    <span class="push">© 2026</span>
-  </div>
-</footer>
-
+<footer><div class="wrap">© 2026 Ryan Appuhamy</div></footer>
+</div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Chart full screen" hidden>
+<img id="lb-img" alt="">
+<div class="lb-row">
+<button type="button" id="lb-prev" class="lb-b" aria-label="Previous">←</button>
+<span id="lb-cap"></span>
+<button type="button" id="lb-next" class="lb-b" aria-label="Next">→</button>
+<button type="button" id="lb-x" class="lb-b" aria-label="Close">Close</button>
+</div>
+</div>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = Array.prototype.slice.call(document.querySelectorAll('[data-r]'));
+  if (!reduce && 'IntersectionObserver' in window) {
+    els.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(28px)'; });
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var el=e.target; el.style.transition='opacity 800ms cubic-bezier(.22,1,.36,1), transform 900ms cubic-bezier(.22,1,.36,1)'; el.style.opacity='1'; el.style.transform='none'; io.unobserve(el); setTimeout(function(){ el.style.transition=''; el.style.transitionDelay=''; el.style.transform=''; }, 1800); }); }, { rootMargin:'0px 0px -6% 0px' });
+    els.forEach(function(el, i){ if (el.getBoundingClientRect().top < innerHeight) el.style.transitionDelay = (i*80)+'ms'; io.observe(el); });
+  }
+  var shots = Array.prototype.slice.call(document.querySelectorAll('.pz'));
+  var lb = document.getElementById('lb'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  var cur = 0, last = null;
+  function set(i){ cur = (i + shots.length) % shots.length; var s = shots[cur].querySelector('img'); img.src = s.src; img.alt = s.alt; cap.innerHTML = ''; var n = document.createElement('span'); n.className = 'lb-n'; n.textContent = String(cur+1).padStart(2,'0') + ' / ' + String(shots.length).padStart(2,'0'); cap.appendChild(n); cap.appendChild(document.createTextNode(s.alt)); }
+  function open(i){ last = document.activeElement; set(i); lb.hidden = false; document.body.style.overflow='hidden'; requestAnimationFrame(function(){ lb.style.opacity='1'; }); document.getElementById('lb-x').focus(); }
+  function close(){ lb.style.opacity='0'; document.body.style.overflow=''; setTimeout(function(){ lb.hidden = true; }, reduce?0:250); if (last) last.focus(); }
+  shots.forEach(function(b){ b.addEventListener('click', function(){ open(+b.getAttribute('data-i')); }); });
+  document.getElementById('lb-x').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', function(){ set(cur-1); });
+  document.getElementById('lb-next').addEventListener('click', function(){ set(cur+1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){ if (lb.hidden) return; if (e.key==='Escape') close(); else if (e.key==='ArrowLeft') set(cur-1); else if (e.key==='ArrowRight') set(cur+1); });
+})();
+</script>
 <script src="js/site.js"></script>
 </body>
 </html>

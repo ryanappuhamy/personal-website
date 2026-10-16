@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Ryan Appuhamy</title>
-<meta name="description" content="Ryan Appuhamy: economics graduate and MSc student in Financial Technology and Computing at USI Lugano, building equity research and portfolio tools.">
+<meta name="description" content="Ryan Appuhamy: economics graduate and MSc student in Financial Technology and Computing at USI Lugano, building research and forecasting tools for markets.">
 <meta name="theme-color" content="#08090c">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ryan Appuhamy">
@@ -16,184 +16,163 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/site.css">
-<script>document.documentElement.classList.add("js")</script>
 <style>
-  main { display: flex; flex-direction: column; gap: 72px; padding-bottom: 56px; }
-
-  /* Hero */
-  .hero { padding-top: 64px; }
-  .hero h1 {
-    margin-top: 14px;
-    max-width: 14em;
-    font-size: clamp(40px, 7vw, 64px);
-    font-weight: 600;
-    line-height: 1.02;
-    letter-spacing: -0.035em;
-    text-wrap: balance;
+  html { background:#08090c; }
+  body { margin:0; background:#08090c; color:#e9ebef; -webkit-font-smoothing:antialiased; font-family:Geist,system-ui,-apple-system,'Segoe UI',sans-serif; }
+  a { color:#e9ebef; } a:hover { color:#fff; }
+  ::selection { background:#e9ebef; color:#08090c; }
+  .wrap { max-width:1200px; margin:0 auto; padding:0 clamp(20px,5vw,48px); }
+  header { position:sticky; top:0; z-index:20; background:rgba(8,9,12,0.82); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid #20242c; }
+  header .wrap { min-height:64px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0 24px; }
+  .back { font:500 15px/1 Geist,sans-serif; color:#949aa6; text-decoration:none; padding:14px 0; }
+  .back:hover { color:#e9ebef; }
+  .name { font:600 17px/1 Geist,sans-serif; letter-spacing:-0.01em; text-decoration:none; padding:12px 0; }
+  .hero { padding:clamp(56px,9vw,110px) 0 clamp(40px,6vw,72px); }
+  .eyebrow { font:600 14px/1 Geist,sans-serif; color:#8ea5ff; }
+  h1 { margin:18px 0 0; max-width:980px; font:600 clamp(38px,6vw,84px)/1.04 Geist,sans-serif; letter-spacing:-0.045em; text-wrap:balance; }
+  .lede { margin:24px 0 0; max-width:760px; font:400 clamp(17px,1.7vw,21px)/1.55 Geist,sans-serif; color:#949aa6; text-wrap:pretty; }
+  .tags { margin-top:clamp(28px,4vw,40px); display:flex; flex-wrap:wrap; gap:10px; }
+  .tag { display:inline-flex; align-items:center; padding:9px 14px; border:1px solid #20242c; border-radius:8px; background:#0f1116; font:500 14px/1 Geist,sans-serif; color:#e9ebef; }
+  .figs { margin-top:clamp(40px,6vw,64px); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid #20242c; }
+  .fig { padding:24px 24px 0 0; }
+  .fig + .fig { padding-left:24px; border-left:1px solid #20242c; }
+  .fig-v { font:600 clamp(30px,3.6vw,44px)/1 Geist,sans-serif; letter-spacing:-0.035em; }
+  .fig-l { margin-top:12px; max-width:30ch; font:400 15px/1.5 Geist,sans-serif; color:#949aa6; }
+  .pb { display:grid; grid-template-columns:minmax(240px,1fr) minmax(0,800px); justify-content:space-between; gap:clamp(20px,3vw,48px); align-items:start; padding:clamp(40px,5vw,64px) 0; border-top:1px solid #20242c; }
+  .pb-t { display:flex; flex-direction:column; gap:12px; max-width:420px; }
+  .num { font:400 13px/1 'Geist Mono',monospace; color:#949aa6; }
+  h2 { margin:0; font:600 clamp(22px,2.4vw,30px)/1.2 Geist,sans-serif; letter-spacing:-0.025em; text-wrap:balance; }
+  .pb-t p { margin:0; font:400 clamp(16px,1.5vw,18px)/1.55 Geist,sans-serif; color:#949aa6; text-wrap:pretty; }
+  .pb-t p b { color:#e9ebef; font-weight:500; }
+  .pb-r { min-width:0; }
+  .pz { all:unset; box-sizing:border-box; min-width:0; display:block; width:100%; max-width:800px; cursor:zoom-in; border:1px solid #20242c; border-radius:12px; overflow:hidden; background:#0f1116; transition:border-color 250ms, transform 400ms cubic-bezier(.22,1,.36,1); }
+  .pz img { display:block; width:100%; height:auto; }
+  .pz:hover { border-color:#3a3d44; transform:translateY(-3px); }
+  .pz:focus-visible { outline:2px solid #8ea5ff; outline-offset:3px; }
+  .tbl { border:1px solid #20242c; border-radius:12px; background:#0f1116; overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font:400 15px/1.4 Geist,sans-serif; }
+  th, td { text-align:right; padding:14px 18px; border-bottom:1px solid #20242c; white-space:nowrap; }
+  th:first-child, td:first-child { text-align:left; white-space:normal; }
+  td:not(:first-child) { font-family:'Geist Mono',monospace; font-size:14px; }
+  th { font:500 13px/1.3 Geist,sans-serif; color:#949aa6; }
+  th.t, td.t { text-align:left; white-space:normal; font-family:Geist,sans-serif; }
+  td.t { font-size:15px; }
+  td.t { color:#949aa6; }
+  tbody tr:last-child td { border-bottom:0; }
+  tr.best td { color:#8ea5ff; }
+  .closing { padding:clamp(72px,10vw,130px) 0; border-top:1px solid #20242c; }
+  .closing p { margin:0 0 28px; max-width:640px; font:400 15px/1.55 Geist,sans-serif; color:#949aa6; }
+  .btn { display:inline-flex; align-items:center; padding:16px 26px; border-radius:8px; background:#8ea5ff; color:#08090c; border:1px solid #8ea5ff; font:600 16px/1 Geist,sans-serif; text-decoration:none; transition:background 200ms, border-color 200ms; }
+  .btn:hover { background:#b4c3ff; border-color:#b4c3ff; color:#08090c; }
+  .ctas { margin-top:clamp(28px,4vw,40px); display:flex; flex-wrap:wrap; gap:10px; }
+  .btn--ghost { background:transparent; color:#e9ebef; border-color:#3a3d44; }
+  .btn--ghost:hover { background:transparent; border-color:#949aa6; color:#e9ebef; }
+  footer { border-top:1px solid #20242c; }
+  footer .wrap { padding-top:28px; padding-bottom:28px; font:400 14px/1.4 Geist,sans-serif; color:#949aa6; }
+  #lb { position:fixed; inset:0; z-index:50; background:rgba(8,9,12,0.95); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:clamp(16px,3vw,40px); box-sizing:border-box; opacity:0; transition:opacity 250ms; }
+  #lb[hidden] { display:none; }
+  #lb-img { display:block; max-width:min(100%,1440px); max-height:calc(100vh - 140px); width:auto; height:auto; border:1px solid #20242c; border-radius:10px; }
+  .lb-row { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px 20px; max-width:100%; }
+  .lb-b { all:unset; cursor:pointer; height:44px; min-width:44px; padding:0 14px; box-sizing:border-box; display:grid; place-items:center; border:1px solid #3a3d44; border-radius:8px; color:#e9ebef; font:500 15px/1 Geist,sans-serif; }
+  .lb-b:hover { border-color:#949aa6; }
+  #lb-cap { font:500 15px/1.3 Geist,sans-serif; color:#e9ebef; text-align:center; min-width:0; }
+  .lb-n { font:400 13px/1 'Geist Mono',monospace; color:#949aa6; margin-right:14px; }
+  @media (max-width:760px) {
+    .pb { grid-template-columns:minmax(0,1fr); }
+    .figs { grid-template-columns:1fr; }
+    .fig + .fig { padding-left:0; border-left:0; border-top:1px solid #20242c; margin-top:24px; }
+    th, td { padding:12px 12px; }
   }
-  .hero h1 span { color: var(--muted); }
-  .hero-sub { margin-top: 20px; max-width: 36em; font-size: 17px; line-height: 1.6; color: var(--muted); }
-  .hero-sub b { color: var(--foreground); font-weight: 500; }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-
-  /* About */
-  .bio { max-width: 46rem; padding: 24px; }
-  .bio p { color: var(--muted); font-size: 16px; line-height: 1.75; }
-  .bio p + p { margin-top: 14px; }
-  .bio b { color: var(--foreground); font-weight: 500; }
-  .bio-cv { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 14px; }
-
-  /* Projects */
-  .featured { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 28px; padding: 24px; align-items: start; }
-  .featured h3 { margin-top: 10px; font-size: 26px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
-  .featured p { margin-top: 10px; color: var(--muted); font-size: 15px; }
-  .featured .chips { margin-top: 18px; }
-  .featured .hero-cta { margin-top: 22px; }
-
-  .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-  .project { display: flex; flex-direction: column; gap: 10px; padding: 20px; }
-  .project-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-  .project-arrow { color: var(--faint); transition: color 150ms, transform 200ms; }
-  a.project:hover .project-arrow { color: var(--foreground); transform: translate(2px, -2px); }
-  .project h3 { font-size: 16.5px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.3; }
-  .project p { font-size: 13.5px; color: var(--muted); line-height: 1.6; flex: 1; }
-
-  /* Contact */
-  .contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; padding: 24px; align-items: center; }
-  .contact h3 { font-size: 26px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
-  .contact p { margin-top: 10px; color: var(--muted); }
-  .contact .hero-cta { margin-top: 20px; }
-  .contact-links { display: flex; flex-direction: column; }
-  .contact-link { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); text-decoration: none; font-size: 14px; transition: color 150ms; }
-  .contact-link:last-child { border-bottom: 0; }
-  .contact-link span:first-child { color: var(--muted); }
-  .contact-link:hover span:last-child { color: var(--accent-bright); }
-
-  @media (max-width: 900px) {
-    .featured, .contact { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 640px) {
-    main { gap: 56px; }
-    .hero { padding-top: 36px; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .featured, .contact, .bio { padding: 18px; }
-  }
+  @media (prefers-reduced-motion: reduce) { .pz:hover { transform:none; } }
+</style>
+<style>
+  .nav { display:flex; flex-wrap:wrap; gap:0 clamp(16px,3vw,32px); }
+  .nav a { display:block; padding:14px 0; font:500 15px/1 Geist,sans-serif; color:#949aa6; text-decoration:none; transition:color 200ms; }
+  .nav a:hover { color:#e9ebef; }
+  section[id] { scroll-margin-top:72px; }
+  .sec { display:grid; grid-template-columns:minmax(200px,1fr) minmax(0,800px); justify-content:space-between; gap:clamp(20px,3vw,48px); padding:clamp(48px,6vw,80px) 0; border-top:1px solid #20242c; }
+  .sec h2 { font-size:clamp(26px,3vw,36px); }
+  .sec-b p { margin:0 0 16px; max-width:720px; font:400 clamp(17px,1.6vw,19px)/1.6 Geist,sans-serif; color:#949aa6; text-wrap:pretty; }
+  .sec-b p b { color:#e9ebef; font-weight:500; }
+  .rows { border-top:1px solid #20242c; }
+  .row { display:grid; grid-template-columns:44px minmax(0,1fr) auto; gap:8px 20px; align-items:baseline; padding:26px 0; border-bottom:1px solid #20242c; text-decoration:none; transition:padding 300ms cubic-bezier(.22,1,.36,1); }
+  .row:hover { padding-left:8px; }
+  .row .n { font:400 13px/1 'Geist Mono',monospace; color:#949aa6; }
+  .row .t { font:600 clamp(20px,2.2vw,26px)/1.2 Geist,sans-serif; letter-spacing:-0.02em; color:#e9ebef; }
+  .row .d { grid-column:2; margin-top:8px; font:400 16px/1.55 Geist,sans-serif; color:#949aa6; max-width:620px; }
+  .row .m { grid-column:2; margin-top:4px; font:400 14px/1.4 Geist,sans-serif; color:#949aa6; }
+  .row .a { grid-row:1; grid-column:3; font:500 18px/1 Geist,sans-serif; color:#949aa6; transition:color 200ms, transform 300ms; }
+  .row:hover .a { color:#8ea5ff; transform:translateX(4px); }
+  .proj { padding:clamp(48px,6vw,80px) 0; border-top:1px solid #20242c; }
+  .proj h2 { font-size:clamp(26px,3vw,36px); }
+  .cards { margin-top:clamp(28px,4vw,44px); display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,max(420px,calc((100% - 20px) / 2))),1fr)); gap:20px; }
+  .card { display:flex; flex-direction:column; border:1px solid #20242c; border-radius:14px; background:#0f1116; overflow:hidden; text-decoration:none; transition:border-color 250ms, transform 400ms cubic-bezier(.22,1,.36,1); }
+  .card:hover { border-color:#3a3d44; transform:translateY(-3px); }
+  .card img { display:block; width:100%; aspect-ratio:16/10; border-bottom:1px solid #20242c; }
+  .card-b { display:flex; flex-direction:column; gap:10px; padding:22px 22px 24px; flex:1; }
+  .card-k { font:600 13px/1.3 Geist,sans-serif; color:#8ea5ff; }
+  .card h3 { margin:0; font:600 clamp(19px,1.8vw,22px)/1.25 Geist,sans-serif; letter-spacing:-0.02em; color:#e9ebef; }
+  .card p { margin:0; font:400 15px/1.55 Geist,sans-serif; color:#949aa6; text-wrap:pretty; }
+  .card .card-m { font-size:13px; }
+  .card-l { margin-top:auto; padding-top:6px; font:600 15px/1.4 Geist,sans-serif; color:#e9ebef; text-decoration:underline; text-underline-offset:3px; }
+  .card:hover .card-l { color:#8ea5ff; }
+  @media (prefers-reduced-motion: reduce) { .card:hover { transform:none; } }
+  .links { border-top:1px solid #20242c; margin-top:8px; }
+  .lk { display:flex; justify-content:space-between; gap:16px; padding:16px 0; border-bottom:1px solid #20242c; text-decoration:none; font:400 16px/1.4 Geist,sans-serif; }
+  .lk span:first-child { color:#949aa6; }
+  .lk:hover span:last-child { color:#8ea5ff; }
+  @media (max-width:760px) { .sec { grid-template-columns:minmax(0,1fr); } .row { grid-template-columns:32px minmax(0,1fr) auto; } }
 </style>
 </head>
 <body>
-
-<header class="site-header">
-  <div class="container">
-    <a class="wordmark" href="#top">Ryan Appuhamy</a>
-    <nav class="pill-nav" aria-label="Sections">
-      <span class="pill-nav__indicator" aria-hidden="true"></span>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main id="top" class="container">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="eyebrow rise" style="--i:0">Lugano, Switzerland</div>
-    <h1 class="rise" style="--i:1">Ryan Appuhamy</h1>
-    <p class="hero-sub rise" style="--i:2">Economics graduate and MSc student in Financial Technology at USI. In my spare time I build small tools for markets and investing.</p>
-    <div class="hero-cta rise" style="--i:3">
-      <a href="#projects" class="btn btn--primary">View projects</a>
-      <a href="#contact" class="btn btn--ghost">Get in touch</a>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-head rise"><h2 class="section-title">About</h2></div>
-    <div class="card bio rise" style="--i:1">
-      <p>I studied Economics and Business Management at Università Cattolica in Milan, then moved to Lugano for the <b>MSc in Financial Technology and Computing at USI</b>.</p>
-      <p>I've worked in banking and have been investing my own money for a couple of years. Most of my projects start there: a question about a stock or a sector, and a tool to answer it.</p>
-      <div class="bio-cv">
-        <span class="muted">More about me in my CV.</span>
-        <a href="mailto:inquiriesryan@gmail.com?subject=CV%20request" class="btn btn--ghost">Request my CV</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="section-head rise"><h2 class="section-title">Projects</h2></div>
-
-    <article class="card featured rise" style="--i:1">
-      <div>
-        <span class="badge badge--accent">Personal project</span>
-        <h3>Equity Research Platform</h3>
-        <p>Turns a ticker into a research note built on free, official data. Plus a portfolio tracker, a savings plan simulator and alerts.</p>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Next.js</span><span class="chip">Supabase Postgres</span><span class="chip">SEC EDGAR</span><span class="chip">Finnhub</span><span class="chip">FRED</span><span class="chip">Gemini · Groq · Claude</span>
-        </div>
-        <div class="hero-cta">
-          <a href="equity-research.html" class="btn btn--primary">More about it</a>
-          <a href="https://research.ryanappuhamy.com" target="_blank" rel="noopener" class="btn btn--ghost">Open the live app ↗</a>
-        </div>
-      </div>
-      <a href="equity-research.html" class="frame frame--clip" aria-label="More about the equity research platform">
-        <div class="frame__bar"><span class="frame__dots"><i></i><i></i><i></i></span><span class="frame__url">research.ryanappuhamy.com/portfolio</span></div>
-        <div class="frame__body"><img src="img/shot-portfolio.webp" alt="Portfolio: value, today's P&amp;L, chart vs the S&amp;P 500 and holdings" width="2880" height="2000" loading="lazy" decoding="async"></div>
-      </a>
-    </article>
-
-    <div class="projects-grid" style="margin-top:12px">
-      <a href="power-demand.html" class="card project rise" style="--i:2">
-        <div class="project-top"><span class="badge badge--neutral">Personal project · Forecasting</span><span class="project-arrow">↗</span></div>
-        <h3>Swiss Power Demand Forecasting</h3>
-        <p>Day-ahead forecast of Swiss hourly electricity demand, tested with only what is known at noon the day before. 26% more accurate than a naive forecast.</p>
-      </a>
-      <a href="semiconductors.html" class="card project rise" style="--i:3">
-        <div class="project-top"><span class="badge badge--neutral">Personal project · Markets research</span><span class="project-arrow">↗</span></div>
-        <h3>Semiconductor Cycle Intelligence</h3>
-        <p>An index of the chip cycle from free official data, out-of-sample sales forecasts and a timing strategy on SOXX, tested after costs.</p>
-      </a>
-      <a href="thesis.pdf" target="_blank" rel="noopener" class="card project rise" style="--i:4">
-        <div class="project-top"><span class="badge badge--neutral">Thesis · Macroeconomics</span><span class="project-arrow">↗</span></div>
-        <h3>The Macroeconomic Impact of AI</h3>
-        <p>Bachelor's thesis on why AI's gains don't yet show up in productivity data, and what that means for Europe.</p>
-      </a>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-head rise"><h2 class="section-title">Contact</h2></div>
-    <div class="card contact rise" style="--i:1">
-      <div>
-        <h3>Let's talk.</h3>
-        <p>Looking for an internship in quantitative finance and data. Happy to talk about anything at the intersection of markets and technology.</p>
-        <div class="hero-cta">
-          <a href="mailto:inquiriesryan@gmail.com" class="btn btn--primary">Send an email</a>
-          <a href="mailto:inquiriesryan@gmail.com?subject=CV%20request" class="btn btn--ghost">Request my CV</a>
-        </div>
-      </div>
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:inquiriesryan@gmail.com"><span>Email</span><span>inquiriesryan@gmail.com</span></a>
-        <a class="contact-link" href="https://linkedin.com/in/ryanappuhamy" target="_blank" rel="noopener"><span>LinkedIn</span><span>linkedin.com/in/ryanappuhamy ↗</span></a>
-        <a class="contact-link" href="https://github.com/ryanappuhamy" target="_blank" rel="noopener"><span>GitHub</span><span>github.com/ryanappuhamy ↗</span></a>
-      </div>
-    </div>
-  </section>
-
+<div style="overflow-x:clip">
+<header><div class="wrap">
+<a class="name" href="#top">Ryan Appuhamy</a>
+<nav class="nav" aria-label="Sections"><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+</div></header>
+<main id="top" class="wrap">
+<section class="hero">
+<div data-r="1" class="eyebrow">Lugano, Switzerland</div>
+<h1 data-r="1">Ryan Appuhamy</h1>
+<p data-r="1" class="lede">Economics graduate and MSc student in Financial Technology at USI. In my spare time I build small tools for markets and investing.</p>
+</section>
+<section id="about" class="sec">
+<h2 data-r="1">About</h2>
+<div data-r="1" class="sec-b">
+<p>I studied Economics and Business Management at Università Cattolica in Milan, then moved to Lugano for the <b>MSc in Financial Technology and Computing at USI</b>.</p>
+<p>I’ve worked in banking and have been investing my own money for a couple of years. Most of my projects start there: a question about a stock or a sector, and a tool to answer it.</p>
+</div>
+</section>
+<section id="projects" class="proj">
+<h2 data-r="1">Projects</h2>
+<div class="cards"><a data-r="1" class="card" href="equity-research.html"><img src="img/shot-research.webp" alt="Research report in the equity research platform" loading="lazy" style="object-fit:cover;object-position:top center;background:#14171d"><div class="card-b"><div class="card-k">Investing tool</div><h3>Equity Research Platform</h3><p>Turns a ticker into a research note built on free, official data, with a portfolio tracker, a savings plan simulator and alerts.</p><p class="card-m">Python, FastAPI, Next.js, Postgres</p><span class="card-l">See the project →</span></div></a><a data-r="1" class="card" href="power-demand.html"><img src="img/power-monthly-mape.webp" alt="Monthly forecast error of the power demand model" loading="lazy" style="object-fit:contain;object-position:center;background:#121419"><div class="card-b"><div class="card-k">Forecasting</div><h3>Swiss Power Demand Forecasting</h3><p>Day-ahead forecast of Swiss hourly electricity demand, tested with only what is known at noon the day before. 26% more accurate than a naive forecast.</p><p class="card-m">Python, LightGBM, ENTSO-E data</p><span class="card-l">See the project →</span></div></a><a data-r="1" class="card" href="semiconductors.html"><img src="img/semis-cycle.webp" alt="The semiconductor cycle index since 1987" loading="lazy" style="object-fit:contain;object-position:center;background:#121419"><div class="card-b"><div class="card-k">Markets research</div><h3>Semiconductor Cycle Intelligence</h3><p>An index of the chip cycle from free official data, out-of-sample sales forecasts and a timing strategy on SOXX, tested after costs.</p><p class="card-m">Python, statsmodels, LightGBM</p><span class="card-l">See the project →</span></div></a><a data-r="1" class="card" href="thesis.pdf" target="_blank" rel="noopener"><img src="img/thesis-cover.jpg" alt="Cover of the bachelor’s thesis" loading="lazy" style="object-fit:cover;object-position:center;background:#ffffff"><div class="card-b"><div class="card-k">Thesis</div><h3>The Macroeconomic Impact of AI</h3><p>Bachelor’s thesis on why AI’s gains don’t yet show up in productivity data, and what that means for Europe.</p><p class="card-m">Università Cattolica, Milan</p><span class="card-l">Read the thesis (PDF) ↗</span></div></a></div>
+</section>
+<section id="contact" class="sec">
+<h2 data-r="1">Contact</h2>
+<div data-r="1" class="sec-b">
+<p>I’m looking for an internship in quantitative finance and data. The CV is available on request.</p>
+<div data-r="1" class="ctas"><a class="btn" href="mailto:inquiriesryan@gmail.com">Send an email</a><a class="btn btn--ghost" href="mailto:inquiriesryan@gmail.com?subject=CV%20request">Request my CV</a></div>
+<div class="links" style="margin-top:40px">
+<a class="lk" href="mailto:inquiriesryan@gmail.com"><span>Email</span><span>inquiriesryan@gmail.com</span></a>
+<a class="lk" href="https://linkedin.com/in/ryanappuhamy" target="_blank" rel="noopener"><span>LinkedIn</span><span>linkedin.com/in/ryanappuhamy ↗</span></a>
+<a class="lk" href="https://github.com/ryanappuhamy" target="_blank" rel="noopener"><span>GitHub</span><span>github.com/ryanappuhamy ↗</span></a>
+</div>
+</div>
+</section>
 </main>
-
-<footer class="site-footer">
-  <div class="container">
-    <span>Ryan Appuhamy</span>
-    <span>Lugano</span>
-    <span class="push">© 2026</span>
-  </div>
-</footer>
-
+<footer><div class="wrap">© 2026 Ryan Appuhamy, Lugano</div></footer>
+</div>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = Array.prototype.slice.call(document.querySelectorAll('[data-r]'));
+  if (!reduce && 'IntersectionObserver' in window) {
+    els.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(28px)'; });
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; var el=e.target; el.style.transition='opacity 800ms cubic-bezier(.22,1,.36,1), transform 900ms cubic-bezier(.22,1,.36,1), padding 300ms cubic-bezier(.22,1,.36,1)'; el.style.opacity='1'; el.style.transform='none'; io.unobserve(el); setTimeout(function(){ el.style.transition=''; el.style.transitionDelay=''; el.style.transform=''; }, 1800); }); }, { rootMargin:'0px 0px -6% 0px' });
+    els.forEach(function(el, i){ if (el.getBoundingClientRect().top < innerHeight) el.style.transitionDelay = (i*80)+'ms'; io.observe(el); });
+  }
+})();
+</script>
 <script src="js/site.js"></script>
 </body>
 </html>

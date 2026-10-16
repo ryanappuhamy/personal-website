@@ -1,10 +1,11 @@
 # personal-website
 
-Static personal site for Ryan Appuhamy — plain HTML, CSS and JS, no framework, no build step.
+Static personal site for Ryan Appuhamy: plain HTML, CSS and JS, no framework, no build step.
 
 - **Live:** https://ryanappuhamy.com
 - **Pages:** `index.html` (short bio, projects, contact), `equity-research.html` (equity research platform), `power-demand.html` (Swiss power demand forecasting) and `semiconductors.html` (semiconductor cycle intelligence)
-- **Shared design system:** `css/site.css` and `js/site.js`, matching the platform (equity-research-frontend): colors, Geist fonts, 22px cards, pill nav with sliding indicator (bottom bar on phones), rise animations
+- **Design:** each page carries its own inline CSS in the editorial style of servizi.ryanappuhamy.com (sticky header, numbered sections with text left and image or table right, click-to-zoom charts), in the black + violet palette (`#08090c`, `#8ea5ff`) and Geist fonts
+- **`js/site.js`:** wakes the platform backend (below); no styling or navigation logic
 - **Images:** platform screenshots and project charts in `img/` as `.webp` (2x)
 - **Other files:** `thesis.pdf`, `favicon.svg`
 
